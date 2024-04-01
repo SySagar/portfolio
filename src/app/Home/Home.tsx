@@ -2,8 +2,6 @@ import style from "./home.module.css";
 import {
   Card,
   CardContent,
-  CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -15,8 +13,8 @@ export default function Home() {
         {/* <img src="redBlob.png" width={500} height={500} alt="" /> */}
       </div>
 
-      <div className="central-card">
-        <Card className="shadow-md backdrop-filter backdrop-blur-md border rounded-3xl bg-[#1D1E1D] border-[#363736] pt-4 text-white">
+      <div className="centralCard -translate-y-12">
+        <Card className="shadow-md p-6 backdrop-filter backdrop-blur-2xl border rounded-3xl bg-[#1D1E1D] border-[#363736] pt-4 text-white">
           <CardHeader>
             <CardTitle className="flex justify-center items-center text-3xl">
               Hey, I'm

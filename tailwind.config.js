@@ -18,6 +18,13 @@ module.exports = {
     },
     extend: {
       colors: {
+        tabColorHome: "#F69851",
+        tabColorProjects: "#9A63F5",
+        tabColorAbout: "#EE7271",
+        tabColorGithub: "#000",
+        tabColorMail: "#50c878",
+        tabColorTwitter: "#1DA1F2",
+        tabColorMedium: "#9370DB",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

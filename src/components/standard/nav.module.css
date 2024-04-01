@@ -1,0 +1,41 @@
+.tabColorHome:hover {
+    background-color: #F69851;
+  }
+  
+  .tabColorProjects:hover {
+    background-color: #9A63F5;
+  }
+  
+  .tabColorAbout:hover {
+    background-color: #EE7271;
+  }
+  
+  .tabColorGithub:hover {
+    background-color: #000;
+  }
+  
+  .tabColorMail:hover {
+    background-color: #50c878;
+  }
+  
+  .tabColorTwitter:hover {
+    background-color: #1DA1F2;
+  }
+  
+  .tabColorMedium:hover {
+    background-color: #9370DB;
+  }
+  
+  /* Hover styles */
+  .tabColorHome:hover,
+  .tabColorProjects:hover,
+  .tabColorAbout:hover,
+  .tabColorGithub:hover,
+  .tabColorMail:hover,
+  .tabColorTwitter:hover,
+  .tabColorMedium:hover {
+    opacity: 0.9;
+    transition: 200ms ease-in-out;
+
+  }
+  
