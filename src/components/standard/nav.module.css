@@ -38,4 +38,15 @@
     transition: 200ms ease-in-out;
 
   }
+
+  .tabColorHome,
+  .tabColorProjects,
+  .tabColorAbout,
+  .tabColorGithub,
+  .tabColorMail,
+  .tabColorTwitter,
+  .tabColorMedium 
+  {
+    margin-inline: 1.7px;
+  }
   
