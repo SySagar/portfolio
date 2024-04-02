@@ -9,6 +9,7 @@ import { staticSelectedTabColor } from "@/lib/constants/TabColors";
 import { HTMLAttributes } from "react";
 import { useNavigate } from "react-router-dom";
 import usetabStore from "@/store/tabStore";
+import style from './nav.module.css';
 
 type LinkButtonProps = {
   icon: string;
@@ -40,11 +41,13 @@ export default function LinkButton({
   };
 
   const bgColor =
-    currentTab === value
-      ? `bg-[${
-          staticSelectedTabColor[value as keyof typeof staticSelectedTabColor]
-        }]`
-      : "";
+    currentTab === 'home' && value==currentTab ? "bg-tabColorHome" :
+    currentTab === 'projects' && value==currentTab ? "bg-tabColorProjects" :
+    currentTab === 'about' && value==currentTab ? "bg-tabColorAbout" :
+    currentTab === 'github' && value==currentTab ? "bg-tabColorGithub" :
+    currentTab === 'mail' && value==currentTab ? "bg-tabColorMail" :
+    currentTab === 'twitter' && value==currentTab ? "bg-tabColorTwitter" :
+    "";
 
   return (
     <div
@@ -52,11 +55,13 @@ export default function LinkButton({
       onClick={handleTabChange}
       {...props}
       className={cn(
-        `border border-[#363736] rounded-xl flex justify-center items-center min-w-[55px] h-13`,
+        "relative border border-[#363736] rounded-xl flex justify-center items-center min-w-[55px] h-13",
         bgColor,
         props.className
       )}
     >
+      <div className={`${currentTab === value ? style.active : ''}`}>
+      </div>
       <TooltipProvider>
         <Tooltip>
           <TooltipTrigger>

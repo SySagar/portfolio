@@ -49,4 +49,13 @@
   {
     margin-inline: 1.7px;
   }
+
+  .active{
+    position: absolute;
+    height: 4px;
+    width: 24px;
+    border-radius: 10px;
+    bottom: -6px;
+    background-color: #fff;
+  }
   

@@ -4,6 +4,9 @@
 
 :root{
   --appBackground: #1B1B1B;
+  --cardBackground: #1D1E1D;
+  --cardBorder:  #363736;
+  --secondaryText: #A8A29E;
 }
 
 @layer base {
@@ -76,6 +79,17 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities{
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
   }
 }
 

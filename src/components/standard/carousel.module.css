@@ -1,0 +1,32 @@
+
+.marquee {
+    color: lightgrey;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+}
+
+.marquee__content {
+    list-style: none;
+    height: 100%;
+    display: flex;
+    animation: scrolling 20s linear infinite;
+}
+
+
+.marquee__content div {
+    width: 5rem;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 5rem;
+}
+
+
+@keyframes scrolling{
+    0% { transform: translateX(-0); }
+    100% { transform: translateX(-100%); }
+    }
+    

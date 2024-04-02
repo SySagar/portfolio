@@ -3,7 +3,7 @@ import { Badge } from "@/components/ui/badge";
 
 export default function Projects() {
   return (
-    <div className="py-7">
+    <div className="py-7 pb-24">
       <div>
         <BentoGrid>
           <BentoGridItem
