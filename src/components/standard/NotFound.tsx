@@ -1,10 +1,11 @@
 import { Button } from "../ui/button";
 import { Card, CardContent } from "../ui/card";
+import { useNavigate } from "react-router-dom";
 
 export default function NotFound() {
-
+    const navigate = useNavigate();
     const handleBack = () => {
-        window.history.back();
+     navigate(-1);   
     }
 
   return (
