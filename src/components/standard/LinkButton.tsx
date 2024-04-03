@@ -5,7 +5,6 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
-import { staticSelectedTabColor } from "@/lib/constants/TabColors";
 import { HTMLAttributes } from "react";
 import { useNavigate } from "react-router-dom";
 import usetabStore from "@/store/tabStore";
