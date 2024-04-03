@@ -1,0 +1,22 @@
+
+  .container {
+    position: relative;
+    width: 9px;
+    height: 10px;
+    border: 2px solid white;
+    background: white;
+    border-radius: 50%;
+    padding: 0;
+  }
+  
+  .eye {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 5px;
+    background-color: black;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+  }
+  

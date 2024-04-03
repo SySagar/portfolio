@@ -6,7 +6,7 @@ import style from "./nav.module.css";
 export default function BottomNav() {
   return (
     <div className="fixed bottom-4 w-full flex justify-center items-center ">
-      <Card className="w-1/3 h-[70px] bg-[#1D1E1D] backdrop-filter backdrop-blur-2xl bg-opacity-60 rounded-2xl border-[#363736]  flex flex-row justify-evenly items-evenly  text-white">
+      <Card className="navBody h-[70px] bg-[#1D1E1D] backdrop-filter backdrop-blur-2xl bg-opacity-60 rounded-2xl border-[#363736]  flex flex-row justify-evenly items-evenly  text-white">
         <CardContent className="flex gap-3 p-2 w-full">
           <LinkButton
             className={style.tabColorHome}
@@ -30,7 +30,7 @@ export default function BottomNav() {
             link="/about-me"
           />
 
-          <Separator orientation="vertical" />
+          <Separator className={style.divider} orientation="vertical" />
 
           <LinkButton
             className={style.tabColorGithub}

@@ -9,7 +9,7 @@ import { staticSelectedTabColor } from "@/lib/constants/TabColors";
 import { HTMLAttributes } from "react";
 import { useNavigate } from "react-router-dom";
 import usetabStore from "@/store/tabStore";
-import style from './nav.module.css';
+import style from "./nav.module.css";
 
 type LinkButtonProps = {
   icon: string;
@@ -41,37 +41,43 @@ export default function LinkButton({
   };
 
   const bgColor =
-    currentTab === 'home' && value==currentTab ? "bg-tabColorHome" :
-    currentTab === 'projects' && value==currentTab ? "bg-tabColorProjects" :
-    currentTab === 'about' && value==currentTab ? "bg-tabColorAbout" :
-    currentTab === 'github' && value==currentTab ? "bg-tabColorGithub" :
-    currentTab === 'mail' && value==currentTab ? "bg-tabColorMail" :
-    currentTab === 'twitter' && value==currentTab ? "bg-tabColorTwitter" :
-    "";
+    currentTab === "home" && value == currentTab
+      ? "bg-tabColorHome"
+      : currentTab === "projects" && value == currentTab
+      ? "bg-tabColorProjects"
+      : currentTab === "about" && value == currentTab
+      ? "bg-tabColorAbout"
+      : currentTab === "github" && value == currentTab
+      ? "bg-tabColorGithub"
+      : currentTab === "mail" && value == currentTab
+      ? "bg-tabColorMail"
+      : currentTab === "twitter" && value == currentTab
+      ? "bg-tabColorTwitter"
+      : "";
 
   return (
-    <div
-      id={value}
-      onClick={handleTabChange}
-      {...props}
-      className={cn(
-        "relative border border-[#363736] rounded-xl flex justify-center items-center min-w-[55px] h-13",
-        bgColor,
-        props.className
-      )}
-    >
-      <div className={`${currentTab === value ? style.active : ''}`}>
-      </div>
-      <TooltipProvider>
-        <Tooltip>
+    <TooltipProvider delayDuration={50}>
+      <Tooltip>
+        <div
+          id={value}
+          onClick={handleTabChange}
+          {...props}
+          className={cn(
+            "relative border border-[#363736] rounded-xl flex justify-center items-center min-w-[50px] h-12",
+            bgColor,
+            props.className
+          )}
+        >
+          <div className={`${currentTab === value ? style.active : ""}`}></div>
+
           <TooltipTrigger>
-            <img className="w-8 h-8" src={icon} alt={text} />
+            <img className="w-6 h-6" src={icon} alt={text} />
           </TooltipTrigger>
           <TooltipContent>
             <p>{text}</p>
           </TooltipContent>
-        </Tooltip>
-      </TooltipProvider>
-    </div>
+        </div>
+      </Tooltip>
+    </TooltipProvider>
   );
 }

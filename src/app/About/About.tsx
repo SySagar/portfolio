@@ -83,7 +83,7 @@ export default function About() {
             <p className="text-black text-sm">India</p>
           </div>
 
-          <div className="mt-1 text-white">
+          <div className="mt-1 text-white font-semibold">
       {    dayjs().format('MMMM D, h:mm A')}
           </div>
       </div>
@@ -150,39 +150,49 @@ export default function About() {
           <CardTitle className="text-white">Come and say hi!</CardTitle>
           <CardContent className="w-full flex flex-col gap-2">
             <Button className="w-full bg-[#262626] flex justify-center items-center hover:bg-tabColorMail gap-4">
+                  <a href="mailto:sysagar07@gmail.com"  className="flex justify-center items-center gap-3">
                   <div>
                     <Mail className="w-4" />
                   </div>
                   <div className="text-md font-bold text-[15px]">
                     sysagar07@gmail.com
                   </div>
+                  </a>
             </Button>
 
             <Button className="w-full bg-[#262626] flex justify-center items-center hover:bg-tabColorTwitter gap-3">
+                  <a href="https://twitter.com/SySagar2" target="_blank"  className="flex justify-center items-center gap-3">
                   <div>
                     <Twitter className="w-4" />
                   </div>
                   <div className="text-md font-bold text-[15px]">
                   @SySagar2
                   </div>
+                  </a>
             </Button>
 
             <Button className="w-full bg-[#262626] flex justify-center items-center hover:bg-[#FA5F55] gap-3">
+                  <a href="https://www.instagram.com/lecifier/" target="_blank" className="flex justify-center items-center gap-3">
+
                   <div>
                     <Instagram className="w-4" />
                   </div>
                   <div className="text-md font-bold text-[15px]">
                     @lecifier
                   </div>
+                  </a>
             </Button>
 
             <Button className="w-full bg-[#262626] flex justify-center items-center hover:bg-[#e57401] gap-3">
+                 <a href="https://drive.google.com/file/d/1Bx4PVhM_12O2ZPLGABg64RErU4UX1E2c/view?usp=sharing" target="_blank"  className="flex justify-center items-center gap-3">
+
                   <div>
                     <FileText className="w-4" />
                   </div>
                   <div className="text-md font-bold text-[15px]">
                     resume.soumyasagar
                   </div>
+                 </a>
             </Button>
           </CardContent>
         </Card>
