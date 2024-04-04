@@ -2,6 +2,7 @@ import { Card, CardTitle, CardContent } from "@/components/ui/card";
 import Experience from "./components/Experience";
 import { Separator } from "@radix-ui/react-separator";
 import Carousel from "@/components/standard/Carousel";
+import Skills from "./components/Skills";
 import dayjs from "dayjs";
 import { Button } from "@/components/ui/button";
 import { MapPin, Mail, FileText, Twitter, Instagram } from "lucide-react";
@@ -139,6 +140,8 @@ export default function About() {
           </CardContent>
         </Card>
 
+        <Skills />
+
         <Card className="softwares p-5  rounded-3xl flex flex-col  items-start justify-center gap-5 w-[550px]  backdrop-blur-xl bg-opacity-30   bg-[var(--cardBackground)] border-[var(--cardBorder)]">
           <CardTitle className="text-white">Software of choice</CardTitle>
           <CardContent>
@@ -146,7 +149,7 @@ export default function About() {
           </CardContent>
         </Card>
 
-        <Card className="softwares p-5  rounded-3xl flex flex-col  items-start justify-center gap-5 w-[550px]  backdrop-blur-xl bg-opacity-30   bg-[var(--cardBackground)] border-[var(--cardBorder)]">
+        <Card className="quick-links p-5  rounded-3xl flex flex-col  items-start justify-center gap-5 w-[550px]  backdrop-blur-xl bg-opacity-30   bg-[var(--cardBackground)] border-[var(--cardBorder)]">
           <CardTitle className="text-white">Come and say hi!</CardTitle>
           <CardContent className="w-full flex flex-col gap-2">
             <Button className="w-full bg-[#262626] flex justify-center items-center hover:bg-tabColorMail gap-4">
