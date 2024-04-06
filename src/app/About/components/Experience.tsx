@@ -37,7 +37,7 @@ export default function Experience({
         <p>{date}</p>
       </div>
 
-      <div className="desc text-[var(--secondaryText)] text-sm font-semibold">
+      <div className="desc text-[var(--secondaryText)] text-sm font-semibold leading-6 mt-3">
         {description}
       </div>
     </div>
