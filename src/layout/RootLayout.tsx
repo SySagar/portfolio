@@ -24,7 +24,6 @@ export default function RootLayout() {
     setVisibility(false);
   }
 
-  console.log(currentTab);
   useEffect(() => {
     handleBackButton();
 
