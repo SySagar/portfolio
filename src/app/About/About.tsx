@@ -6,33 +6,10 @@ import Skills from "./components/Skills";
 import dayjs from "dayjs";
 import { Button } from "@/components/ui/button";
 import { MapPin, Mail, FileText, Twitter, Instagram } from "lucide-react";
-
-const experiences = [
-  {
-    workLink: "https://www.google.com",
-    role: "Software Engineer",
-    company: "Google",
-    date: "2021 - Present",
-    description:
-      "I work on the Google Search team, building the next generation of search experiences.",
-  },
-  {
-    workLink: "https://www.facebook.com",
-    role: "Software Engineer Intern",
-    company: "Facebook",
-    date: "2020",
-    description:
-      "I worked on the Facebook Marketplace team, building features to improve the buying and selling experience.",
-  },
-  {
-    workLink: "https://www.microsoft.com",
-    role: "Software Engineer Intern",
-    company: "Microsoft",
-    date: "2019",
-    description:
-      "I worked on the Microsoft Teams team, building features to improve the collaboration experience.",
-  },
-];
+import { useState, useEffect } from "react";
+import { client } from "@/config/sanityClient";
+import { ExperienceProps } from "./components/Experience";
+import {urlFor}  from '@/utils/imageURLBuilder'
 
 const softwares = [
   <img width={30} src="behance.png" alt="B" />,
@@ -54,13 +31,78 @@ const softwares = [
 ];
 
 export default function About() {
+
+  const [me, setMe] = useState({descriptionProfessional: '', descriptionPersonal: ''});
+  const [experiences, setExperiences] = useState<ExperienceProps[]>([]);
+  const [achievements, setAchievements] = useState<string[]>([]);
+  const [profilePic, setProfilePic] = useState('');
+  useEffect(() => {
+    const fetchExperiences = async () => {
+      const experiences = await client.fetch('*[_type == "experience"] | order(publishedAt desc)');
+      return experiences;
+    };
+
+    fetchExperiences().then((experiencesList: any) => {
+  
+      setExperiences(
+        experiencesList.map((experience: any) => ({
+          company: experience.company,
+          role: experience.role,
+          date: experience.timeframe,
+          description: experience.description,
+          workLink: experience.url,
+        })));
+      });
+    
+  }, []);
+
+  useEffect(() => {
+    const fetchAboutMe = async () => {
+      const aboutMe = await client.fetch('*[_type == "about"]');
+      return aboutMe[0];
+    };
+
+    fetchAboutMe().then((aboutMe: any) => {
+      setMe(
+        {
+          descriptionProfessional: aboutMe.descriptionProfessional,
+          descriptionPersonal: aboutMe.descriptionPersonal,
+        }
+      );
+      });
+    
+  }, []);
+
+  useEffect(() => {
+    const fetchProfilePic = async () => {
+      const profilePic = await client.fetch('*[_type == "profilePic"]');
+      return profilePic[0].profilePic.asset._ref;
+    };
+
+    fetchProfilePic().then((pic: any) => {
+      setProfilePic(urlFor(pic).url());
+      });
+  }, []);
+
+  
+  useEffect(() => {
+    const fetchAchievements = async () => {
+      const achievements = await client.fetch('*[_type == "achievement"]');
+      return achievements[0];
+    };
+
+    fetchAchievements().then((achievementsList: any) => {
+      setAchievements(achievementsList.achievements);
+      });
+  }, []);
+
   return (
     <div className="flex justify-center  gap-6 items-start px-40 py-10 pb-28">
       <div className="left sticky top-10">
         <Card className="p-5 flex flex-col rounded-3xl items-start justify-center w-[550px]  backdrop-blur-xl bg-opacity-30   bg-[var(--cardBackground)] border-[var(--cardBorder)]">
           <CardTitle>
             <img
-              src="https://images.unsplash.com/photo-1499996860823-5214fcc65f8f?q=80&w=1966&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              src={profilePic}
               alt="Me"
               className="rounded-lg  object-cover w-[500px] h-[500px]"
             />
@@ -70,8 +112,8 @@ export default function About() {
             <p className="text-2xl font-semibold">Hey again 👋</p>
             <p className="text-sm text-[var(--secondaryText)] font-semibold">
               I am a software engineer with a passion for web development. I
-              have experience in building web applications using React and
-              Node.js. I am currently working as a software engineer at Google.
+              have experience in building web applications using React, Next and
+              Node.js. Currently actively busy in open source development.
             </p>
           </CardContent>
 
@@ -96,21 +138,11 @@ export default function About() {
         <Card className="info-me p-5  rounded-3xl flex flex-col  items-start justify-center gap-3 w-[550px]  backdrop-blur-xl bg-opacity-30   bg-[var(--cardBackground)] border-[var(--cardBorder)]">
           <CardTitle className="text-white">A little bit about me</CardTitle>
           <CardContent>
-            <p className="text-md text-[var(--secondaryText)] font-semibold">
-              I am a software engineer with a passion for web development. I
-              have experience in building web applications using React and
-              Node.js. I am currently working as a software engineer at
-              <a href="https://www.google.com">Google</a>.
-              <br />
-              <br />
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum
-              totam cumque, vero necessitatibus non eligendi eum quisquam libero
-              eos voluptate voluptatem enim nisi dolorem doloremque dolores
-              praesentium, quam eveniet veritatis! Lorem, ipsum dolor sit amet
-              consectetur adipisicing elit. Ut corporis deleniti necessitatibus
-              amet natus facilis omnis quod itaque perspiciatis rem odio
-              quibusdam laudantium culpa libero consectetur saepe, beatae
-              consequatur iste.
+            <p className="text-md text-[var(--secondaryText)] font-normal">
+              {me.descriptionProfessional}
+             <br />
+             <br />
+             {me.descriptionPersonal}
             </p>
           </CardContent>
         </Card>
@@ -141,6 +173,20 @@ export default function About() {
         </Card>
 
         <Skills />
+
+        <Card className="achievements p-5  rounded-3xl flex flex-col  items-start justify-center gap-5 w-[550px]  backdrop-blur-xl bg-opacity-30   bg-[var(--cardBackground)] border-[var(--cardBorder)]">
+          <CardTitle className="text-white">Achievements</CardTitle>
+          <CardContent>
+                {
+                  achievements.map((achievement, index) => (
+                    <div key={index} className="flex flex-row justify-start items-center gap-2">
+                      <div className="text-white text-lg font-semibold"> • </div>
+                      <div className="text-[var(--secondaryText)] text-sm font-semibold">{achievement}</div>
+                    </div>
+                  ))
+                }
+          </CardContent>
+        </Card>
 
         <Card className="softwares p-5  rounded-3xl flex flex-col  items-start justify-center gap-5 w-[550px]  backdrop-blur-xl bg-opacity-30   bg-[var(--cardBackground)] border-[var(--cardBorder)]">
           <CardTitle className="text-white">Software of choice</CardTitle>

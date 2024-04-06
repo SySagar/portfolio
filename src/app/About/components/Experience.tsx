@@ -1,12 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight } from "lucide-react";
+import { useEffect, useState } from "react";
+import { client } from "@/config/sanityClient";
 
-type ExperienceProps = {
-  workLink: string;
-  role: string;
+export type ExperienceProps = {
   company: string;
+  role: string;
   date: string;
   description: string;
+  workLink: string;
 };
 
 export default function Experience({
@@ -35,7 +37,7 @@ export default function Experience({
         <p>{date}</p>
       </div>
 
-      <div className="desc text-[var(--secondaryText)] text-sm font-semibold">
+      <div className="desc text-[var(--secondaryText)] text-sm font-semibold leading-6 mt-3">
         {description}
       </div>
     </div>
