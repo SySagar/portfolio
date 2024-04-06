@@ -9,6 +9,8 @@ import {
   TooltipTrigger
 } from "@radix-ui/react-tooltip";
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Shield } from "lucide-react";
 
 export default function Home() {
 
@@ -22,6 +24,17 @@ export default function Home() {
     <div className={style.home}>
       <div className="red-blob ">
         {/* <img src="redBlob.png" width={500} height={500} alt="" /> */}
+      </div>
+
+      <div className="sanity-admin">
+        <Button
+        variant={"ghost"}
+          className="absolute top-4 right-4 text-white font-medium hover:bg-transparent hover:text-slate-300"
+          onClick={() => window.open("https://sysagar.sanity.studio/structure")}
+        >
+          <Shield className="mr-2" />
+          Admin
+        </Button>
       </div>
 
       <div className="logo absolute top-4 left-4">
