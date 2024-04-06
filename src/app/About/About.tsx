@@ -6,6 +6,9 @@ import Skills from "./components/Skills";
 import dayjs from "dayjs";
 import { Button } from "@/components/ui/button";
 import { MapPin, Mail, FileText, Twitter, Instagram } from "lucide-react";
+import { useState, useEffect } from "react";
+import { client } from "@/config/sanityClient";
+import { ExperienceProps } from "./components/Experience";
 
 const experiences = [
   {
@@ -54,6 +57,29 @@ const softwares = [
 ];
 
 export default function About() {
+
+  
+  const [experiences, setExperiences] = useState<ExperienceProps[]>([]);
+  useEffect(() => {
+    const fetchExperiences = async () => {
+      const experiences = await client.fetch('*[_type == "experience"] | order(publishedAt desc)');
+      return experiences;
+    };
+
+    fetchExperiences().then((experiencesList: any) => {
+  
+      setExperiences(
+        experiencesList.map((experience: any) => ({
+          company: experience.company,
+          role: experience.role,
+          date: experience.timeframe,
+          description: experience.description,
+          workLink: experience.url,
+        })));
+      });
+    
+  }, []);
+
   return (
     <div className="flex justify-center  gap-6 items-start px-40 py-10 pb-28">
       <div className="left sticky top-10">
