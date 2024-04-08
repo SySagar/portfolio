@@ -62,7 +62,7 @@ export default function Home() {
             </Tooltip>
           </TooltipProvider>
             : <div className="rounded-xl" onClick={handleChangeIcon}>
-            <img className="mt-3 ml-3" src="logo.png" width={60} height={60} style={{borderRadius:50}} alt="" />
+            <img className="mt-3 ml-3" src="logo.png" width={60} height={60} style={{borderRadius:50}} alt="SY" />
       </div>
           }
           
