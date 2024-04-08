@@ -33,7 +33,7 @@ export default function Projects() {
   }, []);
 
   return (
-    <div className="py-7 pb-24">
+    <div className="py-3 sm:py-7 pb-24">
       <div>
         <BentoGrid>
           {
@@ -41,7 +41,7 @@ export default function Projects() {
               <a href={project.url} target="_blank">
                
               <BentoGridItem
-            className="p-6 backdrop-filter backdrop-blur-2xl h-[500px] w-[400px] border rounded-3xl bg-[#1D1E1D] border-[#363736] pt-4 text-white"
+            className="p-6 backdrop-filter backdrop-blur-2xl lg:w-[350px] sm:w-[400px] h-[500px] w-[350px] border rounded-3xl bg-[#1D1E1D] border-[#363736] pt-4 text-white"
             title={<p className="text-white text-xl">{project.title}</p>}
             description={project.description}
             icon={<div>Icon</div>}

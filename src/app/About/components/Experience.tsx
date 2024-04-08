@@ -1,7 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight } from "lucide-react";
-import { useEffect, useState } from "react";
-import { client } from "@/config/sanityClient";
 
 export type ExperienceProps = {
   company: string;
@@ -20,7 +18,7 @@ export default function Experience({
 }: ExperienceProps) {
   return (
     <div className="flex flex-col gap-[7px]">
-      <div className="work-link">
+      <div className="work-link pb-2 sm:pb-0">
         <a href={workLink} target="_blank">
           <Button className="flex flex-row gap-1 hover:bg-slate-200 hover:text-tabColorGithub bg-[#262626] p-0 px-2">
             <p>{company}</p>
@@ -31,7 +29,7 @@ export default function Experience({
         </a>
       </div>
 
-      <div className="role-time flex flex-row gap-1 text-white font-semibold text-md">
+      <div className="role-time flex flex-row gap-1 text-white font-semibold text-sm sm:text-base">
         <p>{role}</p>
         <div>•</div>
         <p>{date}</p>

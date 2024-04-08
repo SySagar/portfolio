@@ -10,6 +10,8 @@ import { useState, useEffect } from "react";
 import { client } from "@/config/sanityClient";
 import { ExperienceProps } from "./components/Experience";
 import {urlFor}  from '@/utils/imageURLBuilder'
+import { cn } from "@/lib/utils";
+import styles from './about.module.css'
 
 const softwares = [
   <img width={30} src="behance.png" alt="B" />,
@@ -97,20 +99,20 @@ export default function About() {
   }, []);
 
   return (
-    <div className="flex justify-center  gap-6 items-start px-40 py-10 pb-28">
-      <div className="left sticky top-10">
-        <Card className="p-5 flex flex-col rounded-3xl items-start justify-center w-[550px]  backdrop-blur-xl bg-opacity-30   bg-[var(--cardBackground)] border-[var(--cardBorder)]">
+    <div className={cn("flex justify-center  gap-6 items-start px-40 py-10 pb-28",styles.container)}>
+      <div className={cn("left sticky top-10",styles.left)}>
+        <Card className={cn("p-5 flex flex-col rounded-3xl items-start justify-center w-[550px]  backdrop-blur-xl bg-opacity-30   bg-[var(--cardBackground)] border-[var(--cardBorder)]",styles.leftCard)}>
           <CardTitle>
             <img
               src={profilePic}
               alt="Me"
-              className="rounded-lg  object-cover w-[500px] h-[500px]"
+              className={cn("rounded-lg  object-cover w-[500px] h-[500px]",styles.profilePic)}
             />
           </CardTitle>
 
           <CardContent className="mt-2 flex flex-col gap-3 text-white w-full px-2 py-5  ">
-            <p className="text-2xl font-semibold">Hey again 👋</p>
-            <p className="text-sm text-[var(--secondaryText)] font-semibold">
+            <p className="text-xl md:text-2xl font-semibold">Hey again 👋</p>
+            <p className="text-sm md:text-base text-[var(--secondaryText)] font-semibold">
               I am a software engineer with a passion for web development. I
               have experience in building web applications using React, Next and
               Node.js. Currently actively busy in open source development.
@@ -135,10 +137,10 @@ export default function About() {
         </Card>
       </div>
       <div className="overflow-y-scroll no-scrollbar flex flex-col item-start  justify-start gap-5 ">
-        <Card className="info-me p-5  rounded-3xl flex flex-col  items-start justify-center gap-3 w-[550px]  backdrop-blur-xl bg-opacity-30   bg-[var(--cardBackground)] border-[var(--cardBorder)]">
-          <CardTitle className="text-white">A little bit about me</CardTitle>
+        <Card className={cn("info-me p-5  rounded-3xl flex flex-col  items-start justify-center gap-3 w-[550px]  backdrop-blur-xl bg-opacity-30   bg-[var(--cardBackground)] border-[var(--cardBorder)]",styles.info)}>
+          <CardTitle className="text-white text-lg md:text-2xl">A little bit about me</CardTitle>
           <CardContent>
-            <p className="text-md text-[var(--secondaryText)] font-normal">
+            <p className="text-sm md:text-base text-[var(--secondaryText)] font-normal">
               {me.descriptionProfessional}
              <br />
              <br />
@@ -147,8 +149,8 @@ export default function About() {
           </CardContent>
         </Card>
 
-        <Card className="exp p-5  rounded-3xl flex flex-col  items-start justify-center gap-3 w-[550px]  backdrop-blur-xl bg-opacity-30   bg-[var(--cardBackground)] border-[var(--cardBorder)]">
-          <CardTitle className="text-white">Experience</CardTitle>
+        <Card className={cn("exp p-5  rounded-3xl flex flex-col  items-start justify-center gap-3 w-[550px]  backdrop-blur-xl bg-opacity-30   bg-[var(--cardBackground)] border-[var(--cardBorder)]",styles.exp)}>
+          <CardTitle className="text-white text-lg md:text-2xl">Experience</CardTitle>
           <CardContent>
             <div className="flex flex-col gap-2">
               {experiences.map((experience, index) => (
@@ -174,8 +176,8 @@ export default function About() {
 
         <Skills />
 
-        <Card className="achievements p-5  rounded-3xl flex flex-col  items-start justify-center gap-5 w-[550px]  backdrop-blur-xl bg-opacity-30   bg-[var(--cardBackground)] border-[var(--cardBorder)]">
-          <CardTitle className="text-white">Achievements</CardTitle>
+        <Card className={cn("achievements p-5  rounded-3xl flex flex-col  items-start justify-center gap-5 w-[550px]  backdrop-blur-xl bg-opacity-30   bg-[var(--cardBackground)] border-[var(--cardBorder)]",styles.achievement)}>
+          <CardTitle className="text-white text-lg md:text-2xl">Achievements</CardTitle>
           <CardContent>
                 {
                   achievements.map((achievement, index) => (
@@ -188,15 +190,15 @@ export default function About() {
           </CardContent>
         </Card>
 
-        <Card className="softwares p-5  rounded-3xl flex flex-col  items-start justify-center gap-5 w-[550px]  backdrop-blur-xl bg-opacity-30   bg-[var(--cardBackground)] border-[var(--cardBorder)]">
-          <CardTitle className="text-white">Software of choice</CardTitle>
+        <Card className={cn("softwares p-5  rounded-3xl flex flex-col  items-start justify-center gap-5 w-[550px]  backdrop-blur-xl bg-opacity-30   bg-[var(--cardBackground)] border-[var(--cardBorder)]",styles.tech)}>
+          <CardTitle className="text-white text-lg md:text-2xl">Software of choice</CardTitle>
           <CardContent>
             <Carousel list={softwares} />
           </CardContent>
         </Card>
 
-        <Card className="quick-links p-5  rounded-3xl flex flex-col  items-start justify-center gap-5 w-[550px]  backdrop-blur-xl bg-opacity-30   bg-[var(--cardBackground)] border-[var(--cardBorder)]">
-          <CardTitle className="text-white">Come and say hi!</CardTitle>
+        <Card className={cn("quick-links p-5  rounded-3xl flex flex-col  items-start justify-center gap-5 w-[550px]  backdrop-blur-xl bg-opacity-30   bg-[var(--cardBackground)] border-[var(--cardBorder)]",styles.links)}>
+          <CardTitle className="text-white text-lg md:text-2xl">Come and say hi!</CardTitle>
           <CardContent className="w-full flex flex-col gap-2">
             <Button className="w-full bg-[#262626] flex justify-center items-center hover:bg-tabColorMail gap-4">
                   <a href="mailto:sysagar07@gmail.com"  className="flex justify-center items-center gap-3">
