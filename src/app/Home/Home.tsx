@@ -22,8 +22,8 @@ export default function Home() {
 
   return (
     <div className={style.home}>
-      <div className="red-blob ">
-        {/* <img src="redBlob.png" width={500} height={500} alt="" /> */}
+      <div className={cn("red-blob absolute right-32 top-0",style.redBlob)}>
+        {/* <img src="greenBlob.png" style={{borderRadius:'55rem'}} width={'600px'}  alt="" /> */}
       </div>
 
       <div className="sanity-admin">
@@ -71,10 +71,27 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="centralCard -translate-y-12">
+      <div className={cn("centralCard -translate-y-12",style.centralCard)}>
+        
+      <div className={cn("absolute -translate-y-40 -translate-x-48 -rotate-6",style.p1)}>
+        <img src="p1.png" alt="" />
+      </div>
+
+      <div className={cn(" absolute -translate-y-44 translate-x-64 rotate-6",style.p2)}>
+        <img src="p2.png" alt="" />
+      </div>
+
+
+      <div className={cn(" absolute translate-y-44 translate-x-72 -rotate-12",style.p4)}>
+        <img src="p4.png" alt="" />
+      </div>
+
+      <div className={cn("absolute translate-y-52 -translate-x-40 ",style.p3)}>
+        <img src="p3.png" alt="" />
+      </div>
         <Card
           className={cn(
-            "shadow-md p-6 backdrop-filter backdrop-blur-2xl border rounded-3xl bg-[#1D1E1D] border-[#363736] pt-4 text-white",
+              "p-6 backdrop-filter bg-opacity backdrop-blur-2xl border rounded-3xl bg-opacity-60  bg-[#1D1E1D] border-[#363736] pt-4 text-white",
             style.card
           )}
         >

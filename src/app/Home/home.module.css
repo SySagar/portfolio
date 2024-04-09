@@ -34,3 +34,48 @@
         display: none;
     }
   }
+
+  
+@media only screen and (max-width: 1020px) {
+    .p1,.p2,.p3,.p4 {
+        display: none!important;
+      }
+
+      .centralCard:hover .p1 {
+        display: none;
+      }
+      .centralCard:hover .p2 {
+        display: none;
+      }
+      .centralCard:hover .p3 {
+        display: none;
+      }
+      .centralCard:hover .p4 {
+        display: none;
+      }
+    
+}
+
+  .p1,.p2,.p3,.p4 {
+    display: none;
+    animation: fadeIn 1.5s;
+  }
+
+
+  .centralCard:hover .p1 {
+    display: block;
+  }
+  .centralCard:hover .p2 {
+    display: block;
+  }
+  .centralCard:hover .p3 {
+    display: block;
+  }
+  .centralCard:hover .p4 {
+    display: block;
+  }
+
+  @keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
