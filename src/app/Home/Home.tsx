@@ -104,7 +104,7 @@ export default function Home() {
             >
               Hey, I'm
               <div className="text-white flex justify-center items-center pl-2  m-2 rounded-xl bg-[#9A63F5]">
-                <p> Sagar</p>
+                <p>Sagar</p>
                 <div>
                   <img
                     className="w-[55px] relative top-1"
@@ -123,7 +123,7 @@ export default function Home() {
               )}
             >
               I'm a
-              <div className="text-white flex justify-center items-center p-2  m-2 rounded-xl bg-[#F69851]">
+              <div className="text-white flex justify-center items-center font-semibold p-2  m-2 rounded-xl bg-[#F69851]">
                 Software Developer,
               </div>
             </div>
@@ -133,9 +133,9 @@ export default function Home() {
                 style.addInfo
               )}
             >
-              currently at
+              currently based at
               <div className="text-white flex justify-center items-center p-2  m-2 rounded-xl bg-[#38a93b]">
-                Enigma
+                India
               </div>
             </div>
           </CardContent>
