@@ -42,6 +42,11 @@ export default defineType({
         title: 'Project url',
         type: 'string',
       }),
+      defineField({
+        name: 'type',
+        title: 'type',
+        type: 'string',
+      }),
     defineField({
         name:"technologies",
         title:"Technologies",

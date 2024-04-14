@@ -82,12 +82,16 @@ export default function Home() {
       </div>
 
 
-      <div className={cn(" absolute translate-y-44 translate-x-72 -rotate-12",style.p4)}>
+      <div className={cn(" absolute translate-y-40 translate-x-96 rotate-6",style.p4)}>
         <img src="p4.png" width={210} alt="" />
       </div>
 
-      <div className={cn("absolute translate-y-52 -translate-x-32 ",style.p3)}>
+      <div className={cn("absolute translate-y-40 -translate-x-44 rotate-2 ",style.p3)}>
         <img src="p3.png" width={210} alt="" />
+      </div>
+
+      <div className={cn("absolute translate-y-52 translate-x-28 -rotate-2",style.p3)}>
+        <img src="p5.png" width={210} alt="" />
       </div>
         <Card
           className={cn(

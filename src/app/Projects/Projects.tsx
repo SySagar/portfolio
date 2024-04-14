@@ -10,6 +10,7 @@ type projectTypes = {
   image: string;
   technologies: string[];
   url: string;
+  projectType: string;
 };
 
 export default function Projects() {
@@ -20,6 +21,7 @@ export default function Projects() {
       return projects;
     };
     fetchPosts().then((projectsList: any) => {
+      console.log(projectsList);
       setProjects(
         projectsList.map((project: any) => ({
           title: project.title,
@@ -27,6 +29,7 @@ export default function Projects() {
           image: urlFor(project.mainImage.asset._ref).url(),
           technologies: project.technologies,
           url: project.url,
+          projectType: project.type,
         }))
       );
     });
@@ -41,7 +44,7 @@ export default function Projects() {
               <a href={project.url} target="_blank">
                
               <BentoGridItem
-            className="p-6 backdrop-filter backdrop-blur-2xl xl:w-[400px] lg:w-[350px] sm:w-[400px] h-[500px] w-[350px] border rounded-3xl bg-[#1D1E1D] border-[#363736] pt-4 text-white"
+            className="p-6 backdrop-filter backdrop-blur-2xl xl:w-[400px] lg:w-[350px] sm:w-[400px] h-[550px] w-[350px] border rounded-3xl bg-[#1D1E1D] border-[#363736] pt-4 text-white"
             title={<p className="text-white text-xl">{project.title}</p>}
             description={project.description}
             icon={<div>Icon</div>}
@@ -60,9 +63,10 @@ export default function Projects() {
               <img
                 src={project.image}
                 alt={project.title}
-                width={400}
-                height={500}
-                style={{ objectFit: "cover" }}
+                width={
+                  project.projectType === "web" ? 400 : 150
+                }
+                style={{ objectFit: "cover",overflow:'hidden',borderRadius:'6px'}}
               />
             }
           />
