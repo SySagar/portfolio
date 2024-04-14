@@ -6,7 +6,7 @@ import style from "./nav.module.css";
 export default function BottomNav() {
   return (
     <div className="fixed bottom-4 w-full flex justify-center items-center ">
-      <Card className="navBody h-[70px] ml-6 bg-[#1D1E1D] backdrop-filter backdrop-blur-2xl bg-opacity-60 rounded-2xl border-[#363736]  flex flex-row justify-evenly items-evenly  text-white">
+      <Card className="navBody h-[70px] sm:ml-6 bg-[#1D1E1D] backdrop-filter backdrop-blur-2xl bg-opacity-60 rounded-2xl border-[#363736]  flex flex-row justify-evenly items-evenly  text-white">
         <CardContent className="flex gap-2 p-2 mt-[1px] w-full">
           <LinkButton
             className={style.tabColorHome}
