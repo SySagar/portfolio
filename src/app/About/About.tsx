@@ -11,6 +11,7 @@ import { client } from "@/config/sanityClient";
 import { ExperienceProps } from "./components/Experience";
 import {urlFor}  from '@/utils/imageURLBuilder'
 import { cn } from "@/lib/utils";
+import AnimateFrame from "@/layout/AnimateFrame";
 import styles from './about.module.css'
 
 const softwares = [
@@ -137,6 +138,8 @@ export default function About() {
 
         </Card>
       </div>
+      <AnimateFrame>
+        
       <div className="overflow-y-scroll no-scrollbar flex flex-col item-start  justify-start gap-5 ">
         <Card className={cn("info-me p-5  rounded-3xl flex flex-col  items-start justify-center gap-3 w-[550px]  backdrop-blur-xl bg-opacity-30   bg-[var(--cardBackground)] border-[var(--cardBorder)]",styles.info)}>
           <CardTitle className="text-white text-lg md:text-2xl">A little bit about me</CardTitle>
@@ -249,6 +252,8 @@ export default function About() {
           </CardContent>
         </Card>
       </div>
+      
+      </AnimateFrame>
     </div>
   );
 }
