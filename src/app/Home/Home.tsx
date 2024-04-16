@@ -12,6 +12,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Shield } from "lucide-react";
 import AnimateFrame from "@/layout/AnimateFrame";
+import { Helmet} from 'react-helmet-async';
 
 export default function Home() {
   const [toggleIcon, setToggleIcon] = useState(true);
@@ -22,6 +23,12 @@ export default function Home() {
 
   return (
     <div className={style.home}>
+       <Helmet>
+        <title>Soumya Sagar | Home</title>
+        <meta name="description" content="Soumya Sagar's Portfolio" />
+        <meta name="keywords" content="Soumya Sagar, Sagar, Portfolio, Software Developer, India" />
+        <link rel="canonical" href="/" />
+       </Helmet>
       <div className={cn("red-blob absolute right-32 top-0", style.redBlob)}>
         {/* <img src="greenBlob.png" style={{borderRadius:'55rem'}} width={'600px'}  alt="" /> */}
       </div>

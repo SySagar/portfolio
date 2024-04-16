@@ -13,6 +13,7 @@ import {urlFor}  from '@/utils/imageURLBuilder'
 import { cn } from "@/lib/utils";
 import AnimateFrame from "@/layout/AnimateFrame";
 import styles from './about.module.css'
+import { Helmet } from "react-helmet-async";
 
 const softwares = [
   <img width={30} src="dribbble.png" alt="D" />,
@@ -102,6 +103,15 @@ export default function About() {
 
   return (
     <div className={cn("flex justify-center  gap-6 items-start px-40 py-10 pb-28",styles.container)}>
+      <Helmet>
+        <title>Soumya Sagar | About</title>
+        <meta name="description" content="Soumya Sagar's Portfolio" />
+        <meta
+          name="keywords"
+          content="Soumya Sagar, Sagar, Portfolio, Software Developer, India"
+        />
+        <link rel="canonical" href="/about-me" />
+      </Helmet>
       <div className={cn("left sticky top-10",styles.left)}>
         <Card className={cn("p-5 flex flex-col rounded-3xl items-start justify-center w-[550px]  backdrop-blur-xl bg-opacity-30   bg-[var(--cardBackground)] border-[var(--cardBorder)]",styles.leftCard)}>
           <CardTitle>

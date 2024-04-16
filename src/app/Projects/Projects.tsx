@@ -4,6 +4,7 @@ import { client } from "@/config/sanityClient";
 import { useEffect, useState } from "react";
 import { urlFor } from "@/utils/imageURLBuilder";
 import AnimateFrame from "@/layout/AnimateFrame";
+import { Helmet } from "react-helmet-async";
 
 type projectTypes = {
   title: string;
@@ -38,6 +39,15 @@ export default function Projects() {
 
   return (
     <div className="py-3 sm:py-7 pb-24">
+      <Helmet>
+        <title>Soumya Sagar | Projects</title>
+        <meta name="description" content="Soumya Sagar's Portfolio" />
+        <meta
+          name="keywords"
+          content="Soumya Sagar, Sagar, Portfolio, Software Developer, India"
+        />
+        <link rel="canonical" href="/projects" />
+      </Helmet>
       <AnimateFrame>
         <div>
           <BentoGrid>

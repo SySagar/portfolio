@@ -5,47 +5,45 @@ import { useEffect } from "react";
 import { validRoutes } from "@/lib/constants/validRoutes";
 import usenavStore from "@/store/navStore";
 import usetabStore from "@/store/tabStore";
+import { HelmetProvider } from "react-helmet-async";
 
 export default function RootLayout() {
   const location = useLocation();
-  const [isVisibleNavbar,setVisibility] = usenavStore((state: any) => [
+  const [isVisibleNavbar, setVisibility] = usenavStore((state: any) => [
     state.isVisibleNavbar,
-    state.setVisibility
+    state.setVisibility,
   ]);
 
-  const [currentTab] = usetabStore((state: any) => [
-    state.currentTab,
-  ]);
+  const [currentTab] = usetabStore((state: any) => [state.currentTab]);
 
   const handleBackButton = () => {
     if (validRoutes.includes(location.pathname)) {
       setVisibility(true);
-    } else
-    setVisibility(false);
-  }
+    } else setVisibility(false);
+  };
 
   useEffect(() => {
     handleBackButton();
 
-    
-  window.addEventListener('popstate', handleBackButton);
+    window.addEventListener("popstate", handleBackButton);
 
-  return () => {
-    window.removeEventListener('popstate', handleBackButton);
-  };
-
-  },[location.pathname]);
+    return () => {
+      window.removeEventListener("popstate", handleBackButton);
+    };
+  }, [location.pathname]);
 
   return (
-    <div className="relative">
-      <div>
-        <Outlet />
-      </div>
-      {isVisibleNavbar && (
-        <div className="">
-          <BottomNav />
+    <HelmetProvider>
+      <div className="relative">
+        <div>
+          <Outlet />
         </div>
-      )}
-    </div>
+        {isVisibleNavbar && (
+          <div className="">
+            <BottomNav />
+          </div>
+        )}
+      </div>
+    </HelmetProvider>
   );
 }

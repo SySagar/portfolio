@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Allow: /projects
+Allow: /about-me
+
+sitemap: /sitemap-file.xml
