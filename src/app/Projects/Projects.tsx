@@ -61,7 +61,7 @@ export default function Projects() {
                     <img
                       src={project.image}
                       alt={project.title}
-                      width={project.projectType === "web" ? 400 : 150}
+                      width={400}
                       style={{
                         objectFit: "cover",
                         overflow: "hidden",
