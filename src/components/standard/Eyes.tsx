@@ -34,8 +34,8 @@ const Eyes: React.FC = () => {
 
       const radius =
         (Math.min(containerRect.width, containerRect.height) / 2) * 0.5;
-      const eyePositionX = containerCenter.x*0.05 + radius * Math.cos(angle);
-      const eyePositionY = containerCenter.y*0.05 + radius * Math.sin(angle);
+      const eyePositionX = containerCenter.x*0.045 + radius * Math.cos(angle);
+      const eyePositionY = containerCenter.y*0.045 + radius * Math.sin(angle);
 
       setEyePosition({
         x: eyePositionX,
@@ -52,7 +52,19 @@ const Eyes: React.FC = () => {
         id="eye"
         className="eye"
         style={{ top: eyePosition.y, left: eyePosition.x }}
-      ></div>
+      >
+        <div style={{
+          width: "1px",
+          height: "2px",
+          borderRadius: "100%",
+          position: "relative",
+          left: "35%",
+          top: "35%",
+          backgroundColor: "white",
+        }}>
+
+        </div>
+      </div>
     </div>
   );
 };
