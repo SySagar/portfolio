@@ -5,7 +5,8 @@ import { useEffect, useState } from "react";
 import { urlFor } from "@/utils/imageURLBuilder";
 import AnimateFrame from "@/layout/AnimateFrame";
 import { Helmet } from "react-helmet-async";
-import { Skeleton } from "@/components/ui/skeleton"
+import { Skeleton } from "@/components/ui/skeleton";
+import Image from '../../components/standard/Image';
 
 type projectTypes = {
   title: string;
@@ -54,8 +55,9 @@ export default function Projects() {
     }).finally(()=>setLoading(false));
   }, []);
 
+
   return (
-    <div className="py-4 sm:py-7 mb-20">
+    <div className="py-4 sm:py-7 mb-16">
       <Helmet>
         <title>Soumya Sagar | Projects</title>
         <meta name="description" content="Soumya Sagar's Portfolio" />
@@ -95,16 +97,8 @@ export default function Projects() {
                     </div>
                   }
                   image={
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      width={400}
-                      style={{
-                        objectFit: "cover",
-                        overflow: "hidden",
-                        borderRadius: "6px",
-                      }}
-                    />
+                    <Image src={project.image} />
+              
                   }
                 />
               </a>
