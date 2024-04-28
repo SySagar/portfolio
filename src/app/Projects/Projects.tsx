@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { urlFor } from "@/utils/imageURLBuilder";
 import AnimateFrame from "@/layout/AnimateFrame";
 import { Helmet } from "react-helmet-async";
+import { Skeleton } from "@/components/ui/skeleton"
 
 type projectTypes = {
   title: string;
@@ -15,10 +16,26 @@ type projectTypes = {
   projectType: string;
 };
 
+const LoadingProjects = ()=>{
+  return(
+    <div className="flex flex-col gap-3 border w-fit  border-[#363736] p-4 rounded-3xl">
+    <div className="flex flex-col gap-4">
+    <Skeleton className="xl:w-[100px] lg:w-[150px] sm:w-[200px] h-[20px] w-[150px] rounded-xl bg-[#6D6D6D]" />
+    <Skeleton className="xl:w-[200px] lg:w-[250px] sm:w-[300px] h-[30px] w-[250px] rounded-xl bg-[#6D6D6D]" />
+    </div>
+    <Skeleton className="xl:w-[350px] lg:w-[300px] sm:w-[350px] h-[50px] w-[300px] rounded-2xl bg-[#6D6D6D]" />
+
+    <Skeleton className="xl:w-[350px] mt-7 lg:w-[300px] sm:w-[350px] h-[350px] w-[300px] rounded-2xl bg-[#6D6D6D]" />
+  </div>
+    )
+};
+
 export default function Projects() {
   const [projects, setProjects] = useState<projectTypes[]>([]);
+  const [loading,setLoading] = useState(false);
   useEffect(() => {
     const fetchPosts = async () => {
+      setLoading(true);
       const projects = await client.fetch('*[_type == "project"]');
       return projects;
     };
@@ -34,11 +51,11 @@ export default function Projects() {
           projectType: project.type,
         }))
       );
-    });
+    }).finally(()=>setLoading(false));
   }, []);
 
   return (
-    <div className="py-3 sm:py-7 pb-24">
+    <div className="py-4 sm:py-7 mb-20">
       <Helmet>
         <title>Soumya Sagar | Projects</title>
         <meta name="description" content="Soumya Sagar's Portfolio" />
@@ -50,7 +67,17 @@ export default function Projects() {
       </Helmet>
       <AnimateFrame>
         <div>
-          <BentoGrid>
+          {loading ? 
+          <BentoGrid>{
+
+            Array.from({ length: 5 }).map((_,idx) => 
+            <LoadingProjects key={idx} />
+            )
+          }
+          </BentoGrid>
+          : 
+            <>
+            <BentoGrid>
             {projects.map((project) => (
               <a href={project.url} target="_blank">
                 <BentoGridItem
@@ -83,6 +110,8 @@ export default function Projects() {
               </a>
             ))}
           </BentoGrid>
+            </>
+          }
         </div>
       </AnimateFrame>
     </div>
