@@ -52,7 +52,9 @@ export default function LinkButton({
       ? "bg-tabColorMail"
       : currentTab === "twitter" && value == currentTab
       ? "bg-tabColorTwitter"
-      : "";
+      : currentTab === "medium" && value == currentTab
+      ? "bg-tabColorMedium"
+      :"";
 
   return (
     <TooltipProvider delayDuration={50}>

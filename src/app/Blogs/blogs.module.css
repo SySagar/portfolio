@@ -1,0 +1,10 @@
+.blogs{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    justify-content: top;
+    margin-top: 2rem;
+    height: 100vh;
+    width: 100%;
+}
