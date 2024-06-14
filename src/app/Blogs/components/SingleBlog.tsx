@@ -97,7 +97,7 @@ export default function SingleBlog() {
             {blog.categories.map((category, index) => (
               <span
                 key={index}
-                className="text-white text-xs sm:text-sm p-1 px-3 font-semibold rounded-2xl bg-[#F1F5F9] text-[#000]"
+                className=" text-xs sm:text-sm p-1 px-3 font-semibold rounded-2xl bg-[#F1F5F9] text-[#000]"
               >
                 {category}
               </span>
