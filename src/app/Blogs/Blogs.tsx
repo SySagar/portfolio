@@ -6,25 +6,27 @@ import { dateFormatter } from "@/utils/dateFormatter";
 import { Helmet } from "react-helmet-async";
 import {ExternalLink} from 'lucide-react'
 import { Skeleton } from "@/components/ui/skeleton";
+import { Link } from "react-router-dom";
 
 export default function Blogs() {
   const [blogs, setBlogs] = useState([
     {
       title: "",
       date: "",
-      url: "",
+      md: "",
+      categories: [],
     },
   ]);
 
   useEffect(() => {
     try {
       APIMethods.blogs.getMediumData().then((res) => {
-        console.log(res);
         setBlogs(
           res.data.items.map((blog: any) => ({
             title: blog.title,
             date: blog.pubDate,
-            url: blog.link,
+            md: blog.content,
+            categories: blog.categories,
           }))
         );
       });
@@ -52,7 +54,7 @@ export default function Blogs() {
           }}
         >
           <div className="blogList flex flex-col ">
-            {blogs ? blogs.slice().reverse().map((blog, index) => (
+            {blogs.length>0 ? blogs.slice().reverse().map((blog, index) => (
               <div
                 key={index}
                 className="flex flex-col gap-2 justify-center items-center py-10 hover:bg-[#434443] rounded-lg duration-150"
@@ -61,13 +63,25 @@ export default function Blogs() {
                     <div  className="text-[#FDFDFD] font-semibold text-xl">
                     {blog.title}
                     </div>
-                <a
-                  href={blog.url}
-                  target="_blank"
-                  rel="noreferrer"
+                <Link
+                to={{pathname:'/blogs/'+blog.title}}
+                  target="_self"
+                  state={{
+                    title:blog.title,
+                    date:dateFormatter(blog.date),
+                    md:blog.md,
+                    categories:blog.categories
+                  }}
+                  // onClick={() => sendData(
+                  //   {
+                  //     title:blog.title,
+                  //     date:blog.date,
+                  //     url:blog.url
+                  //   }
+                  // )}
                 >
                 <ExternalLink size={22} color="#FDFDFD" />
-                </a>
+                </Link>
                 
                 </div>
                 <p className="text-[#FDFDFD] text-sm">{dateFormatter(blog.date)}</p>
