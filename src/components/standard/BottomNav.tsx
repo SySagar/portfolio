@@ -29,6 +29,13 @@ export default function BottomNav() {
             text="About me"
             link="/about-me"
           />
+              <LinkButton
+            className={style.tabColorMedium}
+            icon="medium.png"
+            text="Soumya Sagar"
+            link="/blogs"
+            value={"medium"}
+          />
 
           <Separator className={style.divider} orientation="vertical" />
 
@@ -54,14 +61,6 @@ export default function BottomNav() {
             value="twitter"
             text="@SySagar2"
             link="https://twitter.com/SySagar2"
-            isNativeLink={false}
-          />
-          <LinkButton
-            className={style.tabColorMedium}
-            icon="medium.png"
-            text="Soumya Sagar"
-            link="https://medium.com/@sysagar07"
-            value={"medium"}
             isNativeLink={false}
           />
         </CardContent>

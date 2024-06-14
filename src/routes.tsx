@@ -4,6 +4,8 @@ import { About } from "./app/About";
 import { Projects } from "./app/Projects";
 import RootLayout from "./layout/RootLayout";
 import NotFound from "./components/standard/NotFound";
+import { Blogs } from "./app/Blogs";
+import SingleBlog from "./app/Blogs/components/SingleBlog";
 
 const router = createBrowserRouter([
     { 
@@ -21,6 +23,14 @@ const router = createBrowserRouter([
     {
         path: "/projects",
         element: <Projects />
+    },
+    {
+        path: "/blogs",
+        element: <Blogs />
+    },
+    {
+        path: "/blogs/:slug",
+        element: <SingleBlog />
     },
     {
         path: "*",

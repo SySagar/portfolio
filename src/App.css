@@ -99,3 +99,7 @@ body{
   background: var(--appBackground);
   font-family: 'Figtree', sans-serif;
 }
+
+.markdown > * {
+  all: revert;
+}
