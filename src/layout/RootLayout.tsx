@@ -14,7 +14,7 @@ export default function RootLayout() {
     state.setVisibility,
   ]);
 
-  const [currentTab] = usetabStore((state: any) => [state.currentTab]);
+
 
   const handleBackButton = () => {
     if (validRoutes.includes(location.pathname)) {

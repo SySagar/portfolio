@@ -18,6 +18,17 @@ type LinkButtonProps = {
   value: string;
 } & HTMLAttributes<HTMLDivElement>;
 
+const bgColorMapping: { [key: string]: string } = {
+  home: "bg-tabColorHome",
+  projects: "bg-tabColorProjects",
+  about: "bg-tabColorAbout",
+  github: "bg-tabColorGithub",
+  mail: "bg-tabColorMail",
+  twitter: "bg-tabColorTwitter",
+  medium: "bg-tabColorMedium",
+};
+
+
 export default function LinkButton({
   icon,
   text,
@@ -26,35 +37,31 @@ export default function LinkButton({
   value,
   ...props
 }: LinkButtonProps) {
-  const [currentTab, setCurrentTab] = usetabStore((state: any) => [
-    state.currentTab,
-    state.setCurrentTab,
-  ]);
+  const [currentTab, setCurrentTab] = usetabStore();
   const navigate = useNavigate();
 
   const handleTabChange = () => {
     setCurrentTab(value);
-    localStorage.setItem("currentTab", value);
     if (isNativeLink) navigate(link);
     else window.open(link, "_blank");
   };
 
-  const bgColor =
-    currentTab === "home" && value == currentTab
-      ? "bg-tabColorHome"
-      : currentTab === "projects" && value == currentTab
-      ? "bg-tabColorProjects"
-      : currentTab === "about" && value == currentTab
-      ? "bg-tabColorAbout"
-      : currentTab === "github" && value == currentTab
-      ? "bg-tabColorGithub"
-      : currentTab === "mail" && value == currentTab
-      ? "bg-tabColorMail"
-      : currentTab === "twitter" && value == currentTab
-      ? "bg-tabColorTwitter"
-      : currentTab === "medium" && value == currentTab
-      ? "bg-tabColorMedium"
-      :"";
+      const bgColor =
+      currentTab === "home" && value == currentTab
+        ? "bg-tabColorHome"
+        : currentTab === "projects" && value == currentTab
+        ? "bg-tabColorProjects"
+        : currentTab === "about-me" && value == currentTab
+        ? "bg-tabColorAbout"
+        : currentTab === "github" && value == currentTab
+        ? "bg-tabColorGithub"
+        : currentTab === "mail" && value == currentTab
+        ? "bg-tabColorMail"
+        : currentTab === "twitter" && value == currentTab
+        ? "bg-tabColorTwitter"
+        : currentTab === "blogs" && value == currentTab
+        ? "bg-tabColorMedium"
+        :"";
 
   return (
     <TooltipProvider delayDuration={50}>

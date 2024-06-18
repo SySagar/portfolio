@@ -25,7 +25,7 @@ export default function BottomNav() {
           <LinkButton
             className={`${style.tabColorAbout}`}
             icon="about.svg"
-            value="about"
+            value="about-me"
             text="About me"
             link="/about-me"
           />
@@ -34,7 +34,7 @@ export default function BottomNav() {
             icon="medium.png"
             text="Soumya Sagar"
             link="/blogs"
-            value={"medium"}
+            value={"blogs"}
           />
 
           <Separator className={style.divider} orientation="vertical" />
