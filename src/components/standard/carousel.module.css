@@ -6,6 +6,28 @@
     display: flex;
 }
 
+.marquee::before, .marquee::after {
+    content: '';
+    position: absolute;
+
+    bottom: 10;
+    width: 70px; /* Adjust the width as needed */
+    z-index: 1;
+    height: 70px;
+    margin-inline: 18px;
+}
+
+.marquee::before {
+    left: 0;
+    background: linear-gradient(to right, rgba(29, 30, 29, 0.9), rgba(25, 25, 255, 0));
+    
+}
+
+.marquee::after {
+    right: 0;
+    background: linear-gradient(to left, rgba(29, 30, 29, 0.9), rgba(25, 25, 255, 0));
+}
+
 .marquee__content {
     list-style: none;
     height: 100%;

@@ -196,6 +196,7 @@ export default function About() {
               <div className="flex flex-col gap-2">
                 {experiences.map((experience, index) => (
                   <div
+                  key={index}
                     className={`border-[var(--cardBorder)] py-4 ${
                       index != experiences.length - 1 ? `border-b-2` : ``
                     }`}
@@ -250,7 +251,7 @@ export default function About() {
             <CardTitle className="text-white text-lg md:text-2xl">
               Software of choice
             </CardTitle>
-            <CardContent>
+            <CardContent className="w-full">
               <Carousel list={softwares} />
             </CardContent>
           </Card>

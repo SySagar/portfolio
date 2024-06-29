@@ -64,7 +64,7 @@ export default function SingleBlog() {
                   if (!node.properties) {
                     node.properties = {};
                   }
-                  const width = window.innerWidth <= 500? '250px' : window.innerWidth <= 700 ? '375px' : window.innerWidth <= 900 ?'600px':'800px';
+                  const width = window.innerWidth <= 500? '320px' : window.innerWidth <= 700 ? '375px' : window.innerWidth <= 900 ?'600px':'800px';
                   node.properties.style =
                     `background: #2d2d2d; color: #cccccc; padding: 20px; border-radius: 5px; font-family: 'Courier New', Courier, monospace; width: ${width}; overflow-x: auto;`;
                 }

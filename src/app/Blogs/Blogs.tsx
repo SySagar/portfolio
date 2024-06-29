@@ -53,14 +53,14 @@ export default function Blogs() {
             minWidth: "60vw",
           }}
         >
-          <div className="blogList flex flex-col ">
-            {blogs.length>0 ? blogs.slice().reverse().map((blog, index) => (
+          <div className="blogList flex flex-col mt-8">
+            {blogs.length>1 ? blogs.slice().reverse().map((blog, index) => (
               <div
                 key={index}
                 className="flex flex-col gap-2 justify-center items-center py-10 hover:bg-[#434443] rounded-lg duration-150"
               >
                 <div className="flex flex-row gap-4 justfiy-between items-center">
-                    <div  className="text-[#FDFDFD] font-semibold text-xl">
+                    <div  className="text-[#FDFDFD] font-semibold text-sm sm:text-sm md:text-md lg:text-lg xl:text-2xl">
                     {blog.title}
                     </div>
                 <Link
@@ -72,13 +72,6 @@ export default function Blogs() {
                     md:blog.md,
                     categories:blog.categories
                   }}
-                  // onClick={() => sendData(
-                  //   {
-                  //     title:blog.title,
-                  //     date:blog.date,
-                  //     url:blog.url
-                  //   }
-                  // )}
                 >
                 <ExternalLink size={22} color="#FDFDFD" />
                 </Link>
@@ -88,11 +81,11 @@ export default function Blogs() {
               </div>
             ))
                 :
-                <div className="text-[#FDFDFD] flex flex-col gap-4 mt-8">
-                    <Skeleton className=" py-10 rounded-xl bg-[#6D6D6D]" />
-                    <Skeleton className=" py-10 rounded-xl bg-[#6D6D6D]" />
-                    <Skeleton className=" py-10 rounded-xl bg-[#6D6D6D]" />
-                    <Skeleton className=" py-10 rounded-xl bg-[#6D6D6D]" />
+                <div className="flex flex-col justify-start gap-4">
+                    <Skeleton className=" py-12 rounded-xl bg-[#6D6D6D]" />
+                    <Skeleton className=" py-12 rounded-xl bg-[#6D6D6D]" />
+                    <Skeleton className=" py-12 rounded-xl bg-[#6D6D6D]" />
+                    <Skeleton className=" py-12 rounded-xl bg-[#6D6D6D]" />
                 </div>
         }
           </div>
