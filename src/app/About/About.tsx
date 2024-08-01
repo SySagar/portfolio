@@ -13,8 +13,9 @@ import { urlFor } from "@/utils/imageURLBuilder";
 import { cn } from "@/lib/utils";
 import AnimateFrame from "@/layout/AnimateFrame";
 import styles from "./about.module.css";
-import { Skeleton } from "@/components/ui/skeleton";
+import AnalogClock from 'analog-clock-react';
 import { Helmet } from "react-helmet-async";
+import ImageWithLoading from "./components/imgWithLoading";
 
 const softwares = [
   <img width={30} src="dribbble.png" alt="D" />,
@@ -64,6 +65,20 @@ export default function About() {
       );
     });
   }, []);
+
+  let options = {
+    width: "50px",
+    border: true,
+    borderColor: "#2e2e2e",
+    baseColor: "#1D1E1D",
+    centerColor: "#2e2e2e",
+    centerBorderColor: "#ffffff",
+    handColors: {
+      second: "#d81c7a",
+      minute: "#ffffff",
+      hour: "#ffffff"
+    }
+};
 
   useEffect(() => {
     const fetchAboutMe = async () => {
@@ -125,18 +140,7 @@ export default function About() {
           )}
         >
           <CardTitle>
-            {profilePic === "" ? (
-              <Skeleton className="rounded-lg  object-cover w-[500px] h-[500px]  rounded-xl bg-[#6D6D6D]" />
-            ) : (
-              <img
-                src={profilePic}
-                alt="Me"
-                className={cn(
-                  "rounded-lg  object-cover w-[500px] h-[500px]",
-                  styles.profilePic
-                )}
-              />
-            )}
+          <ImageWithLoading profilePic={profilePic} />
           </CardTitle>
 
           <CardContent className="mt-2 flex flex-col gap-3 text-white w-full px-2 py-5  ">
@@ -156,8 +160,11 @@ export default function About() {
               <p className="text-black text-sm">India</p>
             </div>
 
-            <div className="mt-1 text-white font-semibold">
-              {dayjs().format("MMMM D, h:mm A")}
+            <div className="mt-1 text-white font-semibold flex flex-row gap-3">
+              {dayjs().format("ddd MMM DD YYYY") }
+              <div className="relative bottom-4">
+              <AnalogClock {...options}  />
+              </div>
             </div>
           </div>
         </Card>
