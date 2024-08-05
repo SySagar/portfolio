@@ -160,7 +160,7 @@ export default function About() {
               <p className="text-black text-sm">India</p>
             </div>
 
-            <div className="mt-1 text-white font-semibold flex flex-row gap-3">
+            <div className="mt-1 text-white font-semibold text-sm md:text-md flex flex-row gap-4">
               {dayjs().format("ddd MMM DD YYYY") }
               <div className="relative bottom-4">
               <AnalogClock {...options}  />
