@@ -23,7 +23,7 @@ const bgColorMapping: { [key: string]: string } = {
   projects: "bg-tabColorProjects",
   about: "bg-tabColorAbout",
   github: "bg-tabColorGithub",
-  mail: "bg-tabColorMail",
+  crafts: "bg-tabColorCrafts",
   twitter: "bg-tabColorTwitter",
   medium: "bg-tabColorMedium",
 };
@@ -55,8 +55,8 @@ export default function LinkButton({
         ? "bg-tabColorAbout"
         : currentTab === "github" && value == currentTab
         ? "bg-tabColorGithub"
-        : currentTab === "mail" && value == currentTab
-        ? "bg-tabColorMail"
+        : currentTab === "crafts" && value == currentTab
+        ? "bg-tabColorCrafts"
         : currentTab === "twitter" && value == currentTab
         ? "bg-tabColorTwitter"
         : currentTab === "blogs" && value == currentTab

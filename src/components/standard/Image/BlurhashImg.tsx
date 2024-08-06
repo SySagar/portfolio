@@ -1,57 +1,37 @@
-import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { Blurhash } from 'react-blurhash';
-import { motion } from 'framer-motion';
-import { encodeImageToBlurhash } from './encoder';
+import { Skeleton } from '@/components/ui/skeleton';
 
 export type BlurhashImgProps = {
   src: string;
-  blurhashSize?: Size;
 };
 
-export type Size = `${number}x${number}`
+export default function BlurhashImg({ src }: BlurhashImgProps) {
 
-const reduceImgUrlDimensions = (input: string, size: Size = '19x19') => {
-  const regex = /\d+x\d+/;
-  const match = input.match(regex);
+  const [loading, setLoading] = useState(true);
 
-  if (match) {
-    const replacement = size
-    return input.replace(regex, replacement);
-  } else {
-    console.info('Dimensions pattern not found so returning input as is');
-    return input;
-  }
-};
-
-export default function BlurhashImg({ src, blurhashSize }: BlurhashImgProps) {
-  const [hashUrl, setHashUrl] = useState('');
-  const [imgIsLoading, setImgIsLoading] = useState(true);
+  const handleImageLoad = () => {
+    setLoading(false);
+  };
 
   useEffect(() => {
-    (async () => {
-      const hash = await encodeImageToBlurhash(reduceImgUrlDimensions(src, blurhashSize));
-      console.log('hash', hash);
-      setHashUrl(hash);
-    })();
-  }, []);
+    const img = new Image();
+    img.src = src;
+    img.onload = handleImageLoad;
+  }, [src]);
 
-  const onLoaded = () => setImgIsLoading(false);
 
   return (
-    <>
-      {hashUrl && <Blurhash hash={hashUrl} width="100%" height="100%" />}
-      <motion.img
-        initial={{ opacity: 0 }}
-        animate={{ opacity: imgIsLoading ? 0 : 1 }}
-        transition={{ opacity: { delay: 0.5, duration: 0.4 } }}
-        onLoad={onLoaded}
+    <>   {loading ? (
+      <Skeleton className="rounded-lg relative object-cover w-[300px] h-[200px] sm:w-[340px] sm:h-[260px] md:w-[340px] md:h-[260px] lg:w-[320px] lg:h-[260px] bg-[#6D6D6D]" />
+    ) : (
+      <img
         className="image"
         src={src}
         loading="lazy"
         width="100%"
         height="100%"
       />
+    )}
     </>
   );
 }

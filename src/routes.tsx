@@ -6,6 +6,7 @@ import RootLayout from "./layout/RootLayout";
 import NotFound from "./components/standard/NotFound";
 import { Blogs } from "./app/Blogs";
 import SingleBlog from "./app/Blogs/components/SingleBlog";
+import Craft from "./app/Crafts/Craft";
 
 const router = createBrowserRouter([
     { 
@@ -31,6 +32,11 @@ const router = createBrowserRouter([
     {
         path: "/blogs/:slug",
         element: <SingleBlog />
+    },
+    
+    {
+        path: "/crafts",
+        element: <Craft />
     },
     {
         path: "*",

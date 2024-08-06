@@ -14,7 +14,7 @@
     background-color: #000;
   }
   
-  .tabColorMail:hover {
+  .tabColorCrafts:hover {
     background-color: #50c878;
   }
   
@@ -31,7 +31,7 @@
   .tabColorProjects:hover,
   .tabColorAbout:hover,
   .tabColorGithub:hover,
-  .tabColorMail:hover,
+  .tabColorCrafts:hover,
   .tabColorTwitter:hover,
   .tabColorMedium:hover {
     opacity: 0.9;
@@ -43,7 +43,7 @@
   .tabColorProjects,
   .tabColorAbout,
   .tabColorGithub,
-  .tabColorMail,
+  .tabColorCrafts,
   .tabColorTwitter,
   .tabColorMedium 
   {
@@ -64,7 +64,7 @@
      height: 60px!important; 
     }
 
-    .divider,.tabColorMail,.tabColorTwitter{
+    .divider,.tabColorCrafts,.tabColorTwitter{
       display: none;
     }
   }

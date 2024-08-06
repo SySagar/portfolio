@@ -22,7 +22,7 @@ module.exports = {
         tabColorProjects: "#9A63F5",
         tabColorAbout: "#EE7271",
         tabColorGithub: "#000",
-        tabColorMail: "#50c878",
+        tabColorCrafts: "#50c878",
         tabColorTwitter: "#1DA1F2",
         tabColorMedium: "#006B7C",
         border: "hsl(var(--border))",

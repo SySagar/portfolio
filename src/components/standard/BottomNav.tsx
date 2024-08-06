@@ -29,12 +29,13 @@ export default function BottomNav() {
             text="About me"
             link="/about-me"
           />
-              <LinkButton
-            className={style.tabColorMedium}
-            icon="medium.png"
-            text="Soumya Sagar"
-            link="/blogs"
-            value={"blogs"}
+
+          <LinkButton
+            className={style.tabColorCrafts}
+            icon="crafts.png"
+            value="crafts"
+            text="Crafts"
+            link="/crafts"
           />
 
           <Separator className={style.divider} orientation="vertical" />
@@ -47,14 +48,15 @@ export default function BottomNav() {
             link="https://github.com/SySagar"
             isNativeLink={false}
           />
+
           <LinkButton
-            className={style.tabColorMail}
-            icon="mail.svg"
-            value="mail"
-            text="sysagar07@gmail.com"
-            link="mailto:sysagar07@gmail.com"
-            isNativeLink={false}
+            className={style.tabColorMedium}
+            icon="medium.png"
+            text="Soumya Sagar"
+            link="/blogs"
+            value={"blogs"}
           />
+
           <LinkButton
             className={style.tabColorTwitter}
             icon="x.svg"

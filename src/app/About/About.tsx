@@ -273,7 +273,7 @@ export default function About() {
               Come and say hi!
             </CardTitle>
             <CardContent className="w-full flex flex-col gap-2">
-              <Button className="w-full bg-[#262626] flex justify-center items-center hover:bg-tabColorMail gap-4">
+              <Button className="w-full bg-[#262626] flex justify-center items-center hover:bg-tabColorCrafts gap-4">
                 <a
                   href="mailto:sysagar07@gmail.com"
                   className="flex justify-center items-center gap-3"
