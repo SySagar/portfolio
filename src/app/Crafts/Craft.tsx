@@ -56,7 +56,7 @@ export default function Craft() {
   return (
     <div
       className={cn(
-        "flex justify-center flex-col gap-6 items-center min-h-screen px-8 py-6 pb-28"
+        "flex justify-center flex-row gap-6 item-center min-h-screen px-8 py-6 pb-28"
       )}
     >
       <Helmet>
@@ -69,13 +69,13 @@ export default function Craft() {
         <link rel="canonical" href="/crafts" />
       </Helmet>
       <AnimateFrame>
-      <div className="flex w-full ">
+      <div className="flex w-full">
         <p className="text-white flex items-center font-light text-md lg:text-xl tracking-wider">
           <PencilRuler className="w-5 h-5 inline-block mr-2" />
         Experimental laboratory of user interactions
         </p>
       </div>
-      <div className="flex flex-wrap md:gap-44">
+      <div className="flex flex-wrap md:gap-36 items-center justify-center">
       {loading ? 
       <div className="flex flex-wrap gap-8">
         <LoadingProjects />
