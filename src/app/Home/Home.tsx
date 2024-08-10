@@ -44,42 +44,11 @@ export default function Home() {
         </Button>
       </div>
 
-      <div className="logo absolute top-4 left-4">
+      <div className="logo absolute top-4 left-8">
         <div className={cn("relative", style.mylogo)}>
-          {toggleIcon ? (
-            <TooltipProvider delayDuration={50}>
-              <Tooltip>
-                <TooltipTrigger onClick={handleChangeIcon}>
-                  <img className="w-[86px]" src="me.webp" alt="" />
-                  <div className="absolute top-10 left-[30px]">
-                    <Eyes />
-                  </div>
-
-                  <div className="absolute top-10 left-[49px]">
-                    <Eyes />
-                  </div>
-                </TooltipTrigger>
-                <TooltipContent
-                  className={cn(
-                    "relative text-slate-50 left-9 rounded-xl flex justify-center items-center text-xs h-6"
-                  )}
-                >
-                  I am watching you. Haha!
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-          ) : (
-            <div className="rounded-xl" onClick={handleChangeIcon}>
-              <img
-                className="mt-3 ml-3"
-                src="logo.png"
-                width={60}
-                height={60}
-                style={{ borderRadius: 50 }}
-                alt="SY"
-              />
-            </div>
-          )}
+           <div className="brand">
+            Sy
+           </div>
         </div>
       </div>
 
