@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import InteractiveFrame from "./components/InteractiveFrame";
 import { Badge } from "@/components/ui/badge";
-import { PencilRuler } from "lucide-react";
+import { PencilRuler, GitPullRequestArrow } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import { useEffect, useState } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -69,7 +69,12 @@ export default function Craft() {
         <link rel="canonical" href="/crafts" />
       </Helmet>
       <AnimateFrame>
-      <div className="flex w-full">
+      <div className="flex w-full relative">
+        <a
+        href="https://gist.github.com/SySagar/62a202715125b32b5375807788844e5a" target="_blank" className="absolute flex gap-2 items-center right-2 top-0 text-white text-sm no-underline hover:underline hover:cursor-pointer">
+        <GitPullRequestArrow className="w-4"/>
+          Open source contribution
+        </a>
         <p className="text-white flex items-center font-light text-md lg:text-xl tracking-wider">
           <PencilRuler className="w-5 h-5 inline-block mr-2" />
         Experimental laboratory of user interactions
@@ -77,7 +82,7 @@ export default function Craft() {
       </div>
       <div className="flex flex-wrap md:gap-36 items-center justify-center">
       {loading ? 
-      <div className="flex flex-wrap gap-8">
+      <div className="flex flex-wrap gap-24 mt-10">
         <LoadingProjects />
         <LoadingProjects />
         <LoadingProjects />
