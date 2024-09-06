@@ -114,3 +114,69 @@ body{
 *::selection {
   color: rgb(216, 210, 143)
 }
+
+.blob1 {
+  border-radius: 50%;
+  width: 640px;
+  height: 75%;
+  position: fixed;
+
+  top: -240px;
+  z-index: -2;
+
+  /* needs to be very contrasty color. E.g. light gray on white won't work */
+
+  background-image: radial-gradient(circle, rgba(225, 76, 76, 0.6) 20%,rgba(225, 76, 76, 0.4) 20%,rgba(225, 76, 76, 0.3) 30%,rgba(225, 76, 76, 0.2) 30%);
+  -webkit-filter: blur(65px);
+  opacity: 0.2;
+  filter: blur(65px);
+}
+
+.blob2 {
+  border-radius: 50%;
+  width: 500px;
+  height: 75%;
+  position: fixed;
+
+  z-index: -2;
+
+  /* needs to be very contrasty color. E.g. light gray on white won't work */
+
+  background-image: radial-gradient(circle, rgba(46, 140, 203, 0.6) 20%,rgba(46, 140, 203, 0.4) 10%,rgba(46, 140, 203, 0.3) 40%,rgba(46, 140, 203, 0.2) 30%);
+  -webkit-filter: blur(85px);
+  opacity: 0.15;
+  filter: blur(85px);
+}
+
+.blob3 {
+  border-radius: 50%;
+  width: 500px;
+  height: 75%;
+  position: fixed;
+
+  z-index: -2;
+
+  /* needs to be very contrasty color. E.g. light gray on white won't work */
+
+  background-image: radial-gradient(circle, rgba(239, 246, 48, 0.6) 20%,rgba(239, 246, 48, 0.4) 10%,rgba(239, 246, 48, 0.3) 40%,rgba(239, 246, 48, 0.2) 30%);
+  -webkit-filter: blur(85px);
+  opacity: 0.15;
+  filter: blur(85px);
+  backdrop-filter: blur(160px);
+}
+
+.bgfilter{
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  z-index: -1;
+
+  background: rgba( 255, 255, 255, 0 );
+backdrop-filter: blur( 50px );
+-webkit-backdrop-filter: blur( 50px );
+border-radius: 10px;
+}

@@ -2,12 +2,7 @@ import style from "./home.module.css";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import Eyes from "@/components/standard/Eyes";
-import {
-  Tooltip,
-  TooltipProvider,
-  TooltipContent,
-  TooltipTrigger,
-} from "@radix-ui/react-tooltip";
+import { motion } from "framer-motion";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Shield } from "lucide-react";
@@ -15,11 +10,33 @@ import AnimateFrame from "@/layout/AnimateFrame";
 import { Helmet} from 'react-helmet-async';
 
 export default function Home() {
-  const [toggleIcon, setToggleIcon] = useState(true);
 
-  const handleChangeIcon = () => {
-    setToggleIcon(!toggleIcon);
+  const transitionSettings = {
+    type: "spring",
+    stiffness: 300,
+    damping: 40,
+    duration: 1,
   };
+
+
+
+  const pictureVariants = (x:number, y:number, rotate:number)=> ({
+    hidden: {
+      opacity: 0,
+      x: 0,
+      y: 0,
+      rotate: 0,
+      scale: 0.5,
+    },
+    visible: {
+      opacity: 1,
+      x: x,
+      y: y,
+      rotate: rotate,
+      scale: 1,
+      transition: transitionSettings,
+    },
+  });
 
   return (
     <div className={style.home}>
@@ -29,9 +46,14 @@ export default function Home() {
         <meta name="keywords" content="Soumya Sagar, Sagar, Portfolio, Software Developer, India" />
         <link rel="canonical" href="/" />
        </Helmet>
-      <div className={cn("red-blob absolute right-32 top-0", style.redBlob)}>
-        {/* <img src="greenBlob.png" style={{borderRadius:'55rem'}} width={'600px'}  alt="" /> */}
+      <div className="bgfilter">
       </div>
+
+      <div className="blob1  sm:left-[150px] left-[-350px]"></div>
+      
+      <div className="blob2 sm:left-[950px] left-[-350px] sm:top-[-80px] "></div>
+      
+      <div className="blob3 sm:top-[380px] sm:left-[800px] top-[400px] left-[80px]"></div>
 
       <div className="sanity-admin">
         <Button
@@ -53,51 +75,47 @@ export default function Home() {
       </div>
 
       <AnimateFrame>
-        <div className={cn("centralCard -translate-y-12", style.centralCard)}>
-          <div
+        <motion.div 
+         initial="hidden"
+         whileHover="visible"
+        className={cn("centralCard -translate-y-12", style.centralCard)}>
+          <motion.div
             className={cn(
-              "absolute -translate-y-32 -translate-x-28 -rotate-6",
+              "absolute",
               style.p1
             )}
+            variants={pictureVariants(-120, -130, -6)}
           >
             <img src="p1.png" width={210} alt="" />
-          </div>
+          </motion.div>
 
-          <div
-            className={cn(
-              " absolute -translate-y-40 translate-x-64 rotate-6",
-              style.p2
-            )}
+          <motion.div
+            className={cn("absolute", style.p2)}
+        variants={pictureVariants(280, -150, 6)}
           >
             <img src="p2.png" width={210} alt="" />
-          </div>
+          </motion.div>
 
-          <div
-            className={cn(
-              " absolute translate-y-40 translate-x-96 rotate-6",
-              style.p4
-            )}
+          <motion.div
+            className={cn("absolute", style.p4)}
+            variants={pictureVariants(360, 180, 6)}
           >
             <img src="p4.png" width={210} alt="" />
-          </div>
+          </motion.div>
 
-          <div
-            className={cn(
-              "absolute translate-y-40 -translate-x-44 rotate-2 ",
-              style.p3
-            )}
+          <motion.div
+             className={cn("absolute", style.p3)}
+             variants={pictureVariants(-160, 150, 2)}
           >
             <img src="p3.png" width={210} alt="" />
-          </div>
+          </motion.div>
 
-          <div
-            className={cn(
-              "absolute translate-y-52 translate-x-28 -rotate-2",
-              style.p3
-            )}
+          <motion.div
+             className={cn("absolute", style.p5)}
+             variants={pictureVariants(100, 200, -2)}
           >
             <img src="p5.png" width={210} alt="" />
-          </div>
+          </motion.div>
           <Card
             className={cn(
               "p-6 backdrop-filter bg-opacity backdrop-blur-2xl border rounded-3xl bg-opacity-60  bg-[#1D1E1D] border-[#363736] pt-4 text-white",
@@ -149,7 +167,7 @@ export default function Home() {
               </div>
             </CardContent>
           </Card>
-        </div>
+        </motion.div>
       </AnimateFrame>
     </div>
   );
