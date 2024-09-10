@@ -14,6 +14,7 @@ type projectTypes = {
   image: string;
   technologies: string[];
   url: string;
+  githubUrl: string;
   projectType: string;
 };
 
@@ -49,6 +50,7 @@ export default function Projects() {
           image: urlFor(project.mainImage.asset._ref).url(),
           technologies: project.technologies,
           url: project.url,
+          githubUrl: project.github_url,
           projectType: project.type,
         }))
       );
@@ -87,6 +89,7 @@ export default function Projects() {
                   title={<p className="text-white text-xl">{project.title}</p>}
                   description={project.description}
                   icon={<div>Icon</div>}
+                  github_url={project.githubUrl}
                   technologies={
                     <div className="flex flex-wrap gap-2">
                       {project.technologies.map((tech) => (
