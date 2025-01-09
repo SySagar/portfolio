@@ -53,8 +53,9 @@ export default function BottomNav() {
             className={style.tabColorMedium}
             icon="medium.png"
             text="Soumya Sagar"
-            link="/blogs"
-            value={"blogs"}
+            link="https://medium.com/@sysagar07"
+            value="blogs"
+            isNativeLink={false}
           />
 
           <LinkButton

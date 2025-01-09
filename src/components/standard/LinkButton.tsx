@@ -18,15 +18,15 @@ type LinkButtonProps = {
   value: string;
 } & HTMLAttributes<HTMLDivElement>;
 
-const bgColorMapping: { [key: string]: string } = {
-  home: "bg-tabColorHome",
-  projects: "bg-tabColorProjects",
-  about: "bg-tabColorAbout",
-  github: "bg-tabColorGithub",
-  crafts: "bg-tabColorCrafts",
-  twitter: "bg-tabColorTwitter",
-  medium: "bg-tabColorMedium",
-};
+
+type TabKeys = 
+  | "home"
+  | "projects"
+  | "about-me"
+  | "github"
+  | "crafts"
+  | "twitter"
+  | "blogs";
 
 
 export default function LinkButton({
@@ -46,22 +46,20 @@ export default function LinkButton({
     else window.open(link, "_blank");
   };
 
-      const bgColor =
-      currentTab === "home" && value == currentTab
-        ? "bg-tabColorHome"
-        : currentTab === "projects" && value == currentTab
-        ? "bg-tabColorProjects"
-        : currentTab === "about-me" && value == currentTab
-        ? "bg-tabColorAbout"
-        : currentTab === "github" && value == currentTab
-        ? "bg-tabColorGithub"
-        : currentTab === "crafts" && value == currentTab
-        ? "bg-tabColorCrafts"
-        : currentTab === "twitter" && value == currentTab
-        ? "bg-tabColorTwitter"
-        : currentTab === "blogs" && value == currentTab
-        ? "bg-tabColorMedium"
-        :"";
+  const tabColors: Record<TabKeys, string> = {
+    home: "bg-tabColorHome",
+    projects: "bg-tabColorProjects",
+    "about-me": "bg-tabColorAbout",
+    github: "bg-tabColorGithub",
+    crafts: "bg-tabColorCrafts",
+    twitter: "bg-tabColorTwitter",
+    blogs: "bg-tabColorMedium",
+  };
+  
+  const bgColor = (value === currentTab && currentTab in tabColors)
+    ? tabColors[currentTab as TabKeys]
+    : "";
+  
 
   return (
     <TooltipProvider delayDuration={50}>
