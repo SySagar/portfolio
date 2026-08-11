@@ -5,7 +5,7 @@ import Carousel from "@/components/standard/Carousel";
 import Skills from "./components/Skills";
 import dayjs from "dayjs";
 import { Button } from "@/components/ui/button";
-import { MapPin, Mail, FileText, Twitter, Instagram } from "lucide-react";
+import { MapPin, Mail, FileText, Twitter, Instagram, Shield } from "lucide-react";
 import { useState, useEffect } from "react";
 import { client } from "@/config/sanityClient";
 import { ExperienceProps } from "./components/Experience";
@@ -17,30 +17,20 @@ import AnalogClock from 'analog-clock-react';
 import { Helmet } from "react-helmet-async";
 import ImageWithLoading from "./components/imgWithLoading";
 
-const softwares = [
-  <img width={30} src="dribbble.png" alt="D" />,
-  <img width={30} src="figma.png" alt="F" />,
-  <img width={25} src="slack.png" alt="S" />,
-  <img width={30} src="github.png" alt="G" />,
-  <img width={30} src="discord.png" alt="D" />,
-  <img width={30} src="chrome.png" alt="G" />,
-  <img width={30} src="safari.png" alt="s" />,
-  <img width={30} src="vs_code.png" alt="V" />,
-  <img width={35} src="aws.png" alt="A" />,
-  <img width={25} src="azure.png" alt="A" />,
-  <img width={25} src="linux.png" alt="L" />,
-  <img width={30} src="linkedin.png" alt="L" />,
-  <img width={30} src="medium.png" alt="M" />,
-  <img width={30} src="youtube.png" alt="Y" />,
-  <img width={30} src="twitter.png" alt="T" />,
-  <img width={30} src="spotify.png" alt="S" />,
-  <img width={30} src="telegram.png" alt="T" />,
-];
-
 export default function About() {
   const [me, setMe] = useState({
     descriptionProfessional: "",
     descriptionPersonal: "",
+    customImage: "",
+    email: "sysagar07@gmail.com",
+    emailUrl: "mailto:sysagar07@gmail.com",
+    twitterHandle: "@SySagar2",
+    twitterUrl: "https://twitter.com/SySagar2",
+    instagramHandle: "@lecifier",
+    instagramUrl: "https://www.instagram.com/lecifier/",
+    resumeLabel: "resume.soumyasagar",
+    resumeUrl:
+      "https://drive.google.com/file/d/1Bx4PVhM_12O2ZPLGABg64RErU4UX1E2c/view?usp=sharing",
   });
   const [experiences, setExperiences] = useState<ExperienceProps[]>([]);
   const [achievements, setAchievements] = useState<string[]>([]);
@@ -83,14 +73,26 @@ export default function About() {
   useEffect(() => {
     const fetchAboutMe = async () => {
       const aboutMe = await client.fetch('*[_type == "about"]');
-      return aboutMe[0];
+      return aboutMe?.[0] ?? {};
     };
 
     fetchAboutMe().then((aboutMe: any) => {
-      setMe({
-        descriptionProfessional: aboutMe.descriptionProfessional,
-        descriptionPersonal: aboutMe.descriptionPersonal,
-      });
+      setMe((prev) => ({
+        ...prev,
+        descriptionProfessional: aboutMe.descriptionProfessional ?? prev.descriptionProfessional,
+        descriptionPersonal: aboutMe.descriptionPersonal ?? prev.descriptionPersonal,
+        customImage: aboutMe.customImage
+          ? urlFor(aboutMe.customImage.asset._ref).url()
+          : prev.customImage,
+        email: aboutMe.email ?? prev.email,
+        emailUrl: aboutMe.emailUrl ?? prev.emailUrl,
+        twitterHandle: aboutMe.twitterHandle ?? prev.twitterHandle,
+        twitterUrl: aboutMe.twitterUrl ?? prev.twitterUrl,
+        instagramHandle: aboutMe.instagramHandle ?? prev.instagramHandle,
+        instagramUrl: aboutMe.instagramUrl ?? prev.instagramUrl,
+        resumeLabel: aboutMe.resumeLabel ?? prev.resumeLabel,
+        resumeUrl: aboutMe.resumeUrl ?? prev.resumeUrl,
+      }));
     });
   }, []);
 
@@ -117,13 +119,25 @@ export default function About() {
   }, []);
 
   return (
-    <div
-      className={cn(
-        "flex justify-center  gap-6 items-start px-40 py-10 pb-28",
-        styles.container
-      )}
-    >
-      <Helmet>
+    <>
+      <div className="absolute top-4 right-4 z-50">
+        <Button
+          variant={"ghost"}
+          className="text-white font-medium hover:bg-transparent hover:text-slate-300"
+          onClick={() => window.open("https://sysagar.sanity.studio/structure")}
+        >
+          <Shield className="mr-2" />
+          Admin
+        </Button>
+      </div>
+
+      <div
+        className={cn(
+          "flex justify-center  gap-6 items-start px-40 py-10 pb-28",
+          styles.container
+        )}
+      >
+        <Helmet>
         <title>Soumya Sagar | About</title>
         <meta name="description" content="Soumya Sagar's Portfolio" />
         <meta
@@ -132,7 +146,7 @@ export default function About() {
         />
         <link rel="canonical" href="/about-me" />
       </Helmet>
-      <div className={cn("left sticky top-10", styles.left)}>
+        <div className={cn("left sticky top-10", styles.left)}>
         <Card
           className={cn(
             "p-5 flex flex-col rounded-3xl items-start justify-center w-[550px]  backdrop-blur-xl bg-opacity-30   bg-[var(--cardBackground)] border-[var(--cardBorder)]",
@@ -146,9 +160,7 @@ export default function About() {
           <CardContent className="mt-2 flex flex-col gap-3 text-white w-full px-2 py-5  ">
             <p className="text-xl md:text-2xl font-semibold">Hey again 👋</p>
             <p className="text-sm md:text-base text-[var(--secondaryText)] font-semibold">
-              I am a software engineer with a passion for web development. I
-              have experience in building web applications using React, Next and
-              Node.js. Currently actively busy in open source development.
+              All the victories belong to God, and all the failures are mine alone.
             </p>
           </CardContent>
 
@@ -169,8 +181,8 @@ export default function About() {
           </div>
         </Card>
       </div>
-      <AnimateFrame>
-        <div className="overflow-y-scroll no-scrollbar flex flex-col item-start  justify-start gap-5 ">
+        <AnimateFrame>
+          <div className="overflow-y-scroll no-scrollbar flex flex-col item-start  justify-start gap-5 ">
           <Card
             className={cn(
               "info-me p-5  rounded-3xl flex flex-col  items-start justify-center gap-3 w-[550px]  backdrop-blur-xl bg-opacity-30   bg-[var(--cardBackground)] border-[var(--cardBorder)]",
@@ -181,11 +193,20 @@ export default function About() {
               A little bit about me
             </CardTitle>
             <CardContent>
-              <p className="text-sm md:text-base text-[var(--secondaryText)] font-normal">
+   
+              <p className="text-sm leading-6 md:text-base text-[var(--secondaryText)] font-normal  md:leading-8  ">
                 {me.descriptionProfessional}
+                {me.customImage && (
+                  <img
+                    src={me.customImage}
+                    alt="custom"
+                    className="ml-2  inline-block w-6 h-9 rounded-md object-cover align-middle overflow-hidden transition duration-200 ease-out hover:-translate-y-1 hover:rotate-0 rotate-[6deg] [transform:rotate(6deg)_translateZ(0)] [will-change:transform] shadow-[0_0_0_1px_rgba(255,255,255,0.08)] leading-6"
+                  />
+                )}
+               
                 <br />
                 <br />
-                {me.descriptionPersonal}
+                <span dangerouslySetInnerHTML={{ __html: me.descriptionPersonal }} />
               </p>
             </CardContent>
           </Card>
@@ -249,7 +270,7 @@ export default function About() {
             </CardContent>
           </Card>
 
-          <Card
+          {/* <Card
             className={cn(
               "softwares p-5  rounded-3xl flex flex-col  items-start justify-center gap-5 w-[550px]  backdrop-blur-xl bg-opacity-30   bg-[var(--cardBackground)] border-[var(--cardBorder)]",
               styles.tech
@@ -261,7 +282,7 @@ export default function About() {
             <CardContent className="w-full">
               <Carousel list={softwares} />
             </CardContent>
-          </Card>
+          </Card> */}
 
           <Card
             className={cn(
@@ -281,56 +302,56 @@ export default function About() {
                   <div>
                     <Mail className="w-4" />
                   </div>
-                  <div className="text-md font-bold text-[15px]">
-                    sysagar07@gmail.com
-                  </div>
+                  <div className="text-md font-bold text-[15px]">{me.email}</div>
                 </a>
               </Button>
 
               <Button className="w-full bg-[#262626] flex justify-center items-center hover:bg-tabColorTwitter gap-3">
                 <a
-                  href="https://twitter.com/SySagar2"
+                  href={me.twitterUrl}
                   target="_blank"
+                  rel="noreferrer"
                   className="flex justify-center items-center gap-3"
                 >
                   <div>
                     <Twitter className="w-4" />
                   </div>
-                  <div className="text-md font-bold text-[15px]">@SySagar2</div>
+                  <div className="text-md font-bold text-[15px]">{me.twitterHandle}</div>
                 </a>
               </Button>
 
-              <Button className="w-full bg-[#262626] flex justify-center items-center hover:bg-[#FA5F55] gap-3">
+              {/* <Button className="w-full bg-[#262626] flex justify-center items-center hover:bg-[#FA5F55] gap-3">
                 <a
-                  href="https://www.instagram.com/lecifier/"
+                  href={me.instagramUrl}
                   target="_blank"
+                  rel="noreferrer"
                   className="flex justify-center items-center gap-3"
                 >
                   <div>
                     <Instagram className="w-4" />
                   </div>
-                  <div className="text-md font-bold text-[15px]">@lecifier</div>
+                  <div className="text-md font-bold text-[15px]">{me.instagramHandle}</div>
                 </a>
-              </Button>
+              </Button> */}
 
               <Button className="w-full bg-[#262626] flex justify-center items-center hover:bg-[#e57401] gap-3">
                 <a
-                  href="https://drive.google.com/file/d/1Bx4PVhM_12O2ZPLGABg64RErU4UX1E2c/view?usp=sharing"
+                  href={me.resumeUrl}
                   target="_blank"
+                  rel="noreferrer"
                   className="flex justify-center items-center gap-3"
                 >
                   <div>
                     <FileText className="w-4" />
                   </div>
-                  <div className="text-md font-bold text-[15px]">
-                    resume.soumyasagar
-                  </div>
+                  <div className="text-md font-bold text-[15px]">{me.resumeLabel}</div>
                 </a>
               </Button>
             </CardContent>
           </Card>
         </div>
       </AnimateFrame>
-    </div>
+      </div>
+    </>
   );
 }

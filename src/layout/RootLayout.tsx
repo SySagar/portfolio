@@ -4,7 +4,6 @@ import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { validRoutes } from "@/lib/constants/validRoutes";
 import usenavStore from "@/store/navStore";
-import usetabStore from "@/store/tabStore";
 import { HelmetProvider } from "react-helmet-async";
 
 export default function RootLayout() {
@@ -36,6 +35,11 @@ export default function RootLayout() {
     <HelmetProvider>
       <div className="relative">
         <div>
+          <div className="blob1  sm:left-[150px] left-[-350px]"></div>
+
+          <div className="blob2 sm:left-[1200px] left-[-350px] sm:top-[-100px] "></div>
+
+          <div className="blob3 sm:top-[380px] sm:left-[800px] top-[400px] left-[80px]"></div>
           <Outlet />
         </div>
         {isVisibleNavbar && (

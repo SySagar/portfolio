@@ -8,21 +8,7 @@ export default function BottomNav() {
     <div className="fixed bottom-4 w-full flex justify-center items-center ">
       <Card className="navBody h-[70px] sm:ml-6 bg-[#1D1E1D] backdrop-filter backdrop-blur-2xl bg-opacity-60 rounded-2xl border-[#363736]  flex flex-row justify-evenly items-evenly  text-white">
         <CardContent className="flex gap-2 p-2 mt-[1px] w-full">
-          <LinkButton
-            className={style.tabColorHome}
-            icon="home.svg"
-            text="Home"
-            link="/"
-            value={"home"}
-          />
-          <LinkButton
-            className={style.tabColorProjects}
-            icon="projects.svg"
-            text="Projects"
-            link="/projects"
-            value={"projects"}
-          />
-          <LinkButton
+           <LinkButton
             className={`${style.tabColorAbout}`}
             icon="about.svg"
             value="about-me"
@@ -30,6 +16,13 @@ export default function BottomNav() {
             link="/about-me"
           />
 
+          <LinkButton
+            className={style.tabColorProjects}
+            icon="projects.svg"
+            text="Projects"
+            link="/projects"
+            value={"projects"}
+          />
           <LinkButton
             className={style.tabColorCrafts}
             icon="crafts.png"
