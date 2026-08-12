@@ -7,7 +7,7 @@ import {
 import { cn } from "@/lib/utils";
 import { HTMLAttributes } from "react";
 import { useNavigate } from "react-router-dom";
-import usetabStore from "@/store/tabStore";
+import usetabStore, { type TabKey } from "@/store/tabStore";
 import style from "./nav.module.css";
 
 type LinkButtonProps = {
@@ -15,19 +15,18 @@ type LinkButtonProps = {
   text: string;
   link: string;
   isNativeLink?: boolean;
-  value: string;
+  value: TabKey;
 } & HTMLAttributes<HTMLDivElement>;
 
-
-type TabKeys = 
-  | "home"
-  | "projects"
-  | "about-me"
-  | "github"
-  | "crafts"
-  | "twitter"
-  | "blogs";
-
+const tabColors: Record<TabKey, string> = {
+  home: "bg-tabColorHome",
+  projects: "bg-tabColorProjects",
+  "about-me": "bg-tabColorAbout",
+  github: "bg-tabColorGithub",
+  crafts: "bg-tabColorCrafts",
+  twitter: "bg-tabColorTwitter",
+  blogs: "bg-tabColorMedium",
+};
 
 export default function LinkButton({
   icon,
@@ -46,18 +45,8 @@ export default function LinkButton({
     else window.open(link, "_blank");
   };
 
-  const tabColors: Record<TabKeys, string> = {
-    home: "bg-tabColorHome",
-    projects: "bg-tabColorProjects",
-    "about-me": "bg-tabColorAbout",
-    github: "bg-tabColorGithub",
-    crafts: "bg-tabColorCrafts",
-    twitter: "bg-tabColorTwitter",
-    blogs: "bg-tabColorMedium",
-  };
-  
   const bgColor = (value === currentTab && currentTab in tabColors)
-    ? tabColors[currentTab as TabKeys]
+    ? tabColors[currentTab]
     : "";
   
 
