@@ -23,6 +23,7 @@ const tabColors: Record<TabKey, string> = {
   projects: "bg-tabColorProjects",
   "about-me": "bg-tabColorAbout",
   github: "bg-tabColorGithub",
+  leetcode: "bg-tabColorLeetcode",
   crafts: "bg-tabColorCrafts",
   twitter: "bg-tabColorTwitter",
   blogs: "bg-tabColorMedium",

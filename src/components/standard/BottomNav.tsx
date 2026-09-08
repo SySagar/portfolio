@@ -43,6 +43,15 @@ export default function BottomNav() {
           />
 
           <LinkButton
+            className={style.tabColorLeetcode}
+            icon="leetcode.png"
+            value="leetcode"
+            text="Leetcode"
+            link="https://leetcode.com/u/SySagar/"
+            isNativeLink={false}
+          />
+
+          <LinkButton
             className={style.tabColorMedium}
             icon="medium.png"
             text="Soumya Sagar"

@@ -221,7 +221,7 @@ export default function About() {
               Experience
             </CardTitle>
             <CardContent>
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-2 max-h-[400px] overflow-y-scroll no-scrollbar">
                 {experiences.map((experience, index) => (
                   <div
                   key={index}

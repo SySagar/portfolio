@@ -13,6 +13,10 @@
   .tabColorGithub:hover {
     background-color: #000;
   }
+
+  .tabColorLeetcode:hover {
+    background-color: #F39C12;
+  }
   
   .tabColorCrafts:hover {
     background-color: #50c878;
@@ -31,6 +35,7 @@
   .tabColorProjects:hover,
   .tabColorAbout:hover,
   .tabColorGithub:hover,
+  .tabColorLeetcode:hover,
   .tabColorCrafts:hover,
   .tabColorTwitter:hover,
   .tabColorMedium:hover {
@@ -43,6 +48,7 @@
   .tabColorProjects,
   .tabColorAbout,
   .tabColorGithub,
+  .tabColorLeetcode,
   .tabColorCrafts,
   .tabColorTwitter,
   .tabColorMedium 

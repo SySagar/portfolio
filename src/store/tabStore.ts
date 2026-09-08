@@ -1,9 +1,9 @@
 import { useState, useEffect, type Dispatch, type SetStateAction } from 'react';
 import { useLocation } from 'react-router-dom';
 
-export type TabKey = 'home' | 'about-me' | 'projects' | 'crafts' | 'blogs' | 'github' | 'twitter';
+export type TabKey = 'home' | 'about-me' | 'projects' | 'crafts' | 'blogs' | 'github' | 'leetcode' | 'twitter';
 
-const validTabs = ['home', 'about-me', 'projects', 'crafts', 'blogs', 'github', 'twitter'] as const;
+const validTabs = ['home', 'about-me', 'projects', 'crafts', 'blogs', 'github', 'leetcode', 'twitter'] as const;
 
 const getTabFromPath = (pathname: string): TabKey => {
   const path = pathname.split('/')[1] || 'about-me';
