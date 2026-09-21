@@ -11,6 +11,7 @@ import { client } from "@/config/sanityClient";
 import { ExperienceProps } from "./components/Experience";
 import { urlFor } from "@/utils/imageURLBuilder";
 import { cn } from "@/lib/utils";
+import { fetchAndSortExperiences } from "@/lib/experienceUtils";
 import AnimateFrame from "@/layout/AnimateFrame";
 import styles from "./about.module.css";
 import AnalogClock from 'analog-clock-react';
@@ -36,24 +37,7 @@ export default function About() {
   const [achievements, setAchievements] = useState<string[]>([]);
   const [profilePic, setProfilePic] = useState("");
   useEffect(() => {
-    const fetchExperiences = async () => {
-      const experiences = await client.fetch(
-        '*[_type == "experience"] | order(publishedAt desc)'
-      );
-      return experiences;
-    };
-
-    fetchExperiences().then((experiencesList: any) => {
-      setExperiences(
-        experiencesList.map((experience: any) => ({
-          company: experience.company,
-          role: experience.role,
-          date: experience.timeframe,
-          description: experience.description,
-          workLink: experience.url,
-        }))
-      );
-    });
+    fetchAndSortExperiences().then((sorted: any) => setExperiences(sorted));
   }, []);
 
   let options = {
