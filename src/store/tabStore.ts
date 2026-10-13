@@ -1,24 +1,22 @@
-import { useState, useEffect, type Dispatch, type SetStateAction } from 'react';
-import { useLocation } from 'react-router-dom';
+import { create } from 'zustand';
 
 export type TabKey = 'home' | 'about-me' | 'projects' | 'crafts' | 'blogs' | 'github' | 'leetcode' | 'twitter';
 
 const validTabs = ['home', 'about-me', 'projects', 'crafts', 'blogs', 'github', 'leetcode', 'twitter'] as const;
 
-const getTabFromPath = (pathname: string): TabKey => {
+export const getTabFromPath = (pathname: string): TabKey => {
   const path = pathname.split('/')[1] || 'about-me';
   return validTabs.includes(path as TabKey) ? (path as TabKey) : 'about-me';
 };
 
-const useTabStore = (): readonly [TabKey, Dispatch<SetStateAction<TabKey>>] => {
-  const { pathname } = useLocation();
-  const [currentTab, setCurrentTab] = useState<TabKey>(() => getTabFromPath(pathname));
+interface TabStore {
+  currentTab: TabKey;
+  setCurrentTab: (tab: TabKey) => void;
+}
 
-  useEffect(() => {
-    setCurrentTab(getTabFromPath(pathname));
-  }, [pathname]);
-
-  return [currentTab, setCurrentTab] as const;
-};
+const useTabStore = create<TabStore>((set) => ({
+  currentTab: 'about-me',
+  setCurrentTab: (currentTab: TabKey) => set({ currentTab }),
+}));
 
 export default useTabStore;

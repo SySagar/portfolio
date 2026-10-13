@@ -7,7 +7,7 @@ import {
 import { cn } from "@/lib/utils";
 import { HTMLAttributes } from "react";
 import { useNavigate } from "react-router-dom";
-import usetabStore, { type TabKey } from "@/store/tabStore";
+import useTabStore, { type TabKey } from "@/store/tabStore";
 import style from "./nav.module.css";
 
 type LinkButtonProps = {
@@ -37,7 +37,8 @@ export default function LinkButton({
   value,
   ...props
 }: LinkButtonProps) {
-  const [currentTab, setCurrentTab] = usetabStore();
+  const currentTab = useTabStore((s) => s.currentTab);
+  const setCurrentTab = useTabStore((s) => s.setCurrentTab);
   const navigate = useNavigate();
 
   const handleTabChange = () => {
